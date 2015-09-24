@@ -64,7 +64,8 @@ public class MultiDimList extends ListExpr {
 	}
 
 	/**
-	 * Obtains the representation of a MiniZinc multidimensional list. Grammar:<br>
+	 * Obtains the representation of a MiniZinc multidimensional list. Grammar:
+	 * <br>
 	 * multiDimList : '[|' nonEmptyListElems ((',')?'|' nonEmptyListElems )*
 	 * '|]' ;
 	 * 

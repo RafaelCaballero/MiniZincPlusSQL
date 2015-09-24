@@ -101,8 +101,7 @@ public class ParDecl extends Decl {
 					t = new ParDecl(vt, id);
 
 			} else
-				Parsing.error("Error in pardecl;  no id found "
-						+ pctx.getText());
+				Parsing.error("Error in pardecl;  no id found " + pctx.getText());
 
 		}
 		return t;

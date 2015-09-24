@@ -41,11 +41,8 @@ public class MiniZincSQLModel extends Model {
 	/**
 	 * complete constructor
 	 */
-	public MiniZincSQLModel(List<Comment> comment, 
-			List<Table> table,
-			List<Constraint> constraint, List<Decl> decl,
-            List<Function> function,
-			List<Include> include, List<Init> init, List<Output> output,
+	public MiniZincSQLModel(List<Comment> comment, List<Table> table, List<Constraint> constraint, List<Decl> decl,
+			List<Function> function, List<Include> include, List<Init> init, List<Output> output,
 			List<Predicate> predicate, List<Solve> solve) {
 		this.comment = comment;
 		this.table = table;
@@ -117,8 +114,6 @@ public class MiniZincSQLModel extends Model {
 		this.decl.add(sta);
 	}
 
-
-
 	public void addFunction(Function sta) {
 		this.function.add(sta);
 	}
@@ -143,7 +138,6 @@ public class MiniZincSQLModel extends Model {
 		this.solve.add(sta);
 	}
 
-
 	@Override
 	public String print() {
 		String s = "";
@@ -151,8 +145,7 @@ public class MiniZincSQLModel extends Model {
 		Calendar cal = Calendar.getInstance();
 
 		s += new Comment("MiniZinc Model parsed using Antlr4");
-		s += new Comment("Rafael Caballero " + dateFormat.format(cal.getTime())
-				+ "2015\n\n\n");
+		s += new Comment("Rafael Caballero " + dateFormat.format(cal.getTime()) + "2015\n\n\n");
 
 		s += printStatements("", comment);
 
@@ -180,8 +173,6 @@ public class MiniZincSQLModel extends Model {
 		return decl;
 	}
 
-
-
 	public List<Function> getFunction() {
 		return function;
 	}
@@ -201,6 +192,7 @@ public class MiniZincSQLModel extends Model {
 	public List<Table> getTable() {
 		return table;
 	}
+
 	/**
 	 * @return List of predicates in this model
 	 */
@@ -237,7 +229,6 @@ public class MiniZincSQLModel extends Model {
 		return r;
 	}
 
-	
 	@Override
 	public MiniZincSQLModel clone() {
 		MiniZincSQLModel r = null;
@@ -304,8 +295,8 @@ public class MiniZincSQLModel extends Model {
 			for (Solve x : solve)
 				solvep.add(x.clone());
 		}
-		r = new MiniZincSQLModel(commentp, tablep, constraintp, declp, 
-				functionp, includep, initp, outputp, predicatep, solvep);
+		r = new MiniZincSQLModel(commentp, tablep, constraintp, declp, functionp, includep, initp, outputp, predicatep,
+				solvep);
 		return r;
 	}
 
@@ -419,24 +410,18 @@ public class MiniZincSQLModel extends Model {
 		return r;
 	}
 
-
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((constraint == null) ? 0 : constraint.hashCode());
+		result = prime * result + ((constraint == null) ? 0 : constraint.hashCode());
 		result = prime * result + ((table == null) ? 0 : table.hashCode());
 		result = prime * result + ((decl == null) ? 0 : decl.hashCode());
-		result = prime * result
-				+ ((function == null) ? 0 : function.hashCode());
+		result = prime * result + ((function == null) ? 0 : function.hashCode());
 		result = prime * result + ((include == null) ? 0 : include.hashCode());
 		result = prime * result + ((init == null) ? 0 : init.hashCode());
 		result = prime * result + ((output == null) ? 0 : output.hashCode());
-		result = prime * result
-				+ ((predicate == null) ? 0 : predicate.hashCode());
+		result = prime * result + ((predicate == null) ? 0 : predicate.hashCode());
 		result = prime * result + ((solve == null) ? 0 : solve.hashCode());
 		return result;
 	}
@@ -522,8 +507,8 @@ public class MiniZincSQLModel extends Model {
 	 * 
 	 * @param id
 	 *            The identifier.
-	 * @return The declaration, or null if the identifier does not
-	 *         correspond to a variable
+	 * @return The declaration, or null if the identifier does not correspond to
+	 *         a variable
 	 */
 	public ParDecl getParDeclByName(ID id) {
 		ParDecl r = null;
@@ -536,7 +521,6 @@ public class MiniZincSQLModel extends Model {
 		return r;
 	}
 
-
 	/**
 	 * Removes the variable declaration, if exists
 	 * 
@@ -546,7 +530,7 @@ public class MiniZincSQLModel extends Model {
 	 */
 	public boolean removeVarDecl(VarDecl v) {
 		boolean r = false;
-		if (decl != null && v!=null)
+		if (decl != null && v != null)
 			for (int i = 0; !r && i < this.decl.size(); i++) {
 				Decl d = decl.get(i);
 				if (d instanceof VarDecl && d.getID().equals(v.getID())) {

@@ -65,8 +65,7 @@ public abstract class Solve extends Statement {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result
-				+ ((annotation == null) ? 0 : annotation.hashCode());
+		result = prime * result + ((annotation == null) ? 0 : annotation.hashCode());
 		return result;
 	}
 

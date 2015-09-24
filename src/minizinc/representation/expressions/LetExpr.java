@@ -85,13 +85,11 @@ public class LetExpr extends Expr {
 		LetExpr t = null;
 		if (Parsing.has(ctx.expr())) {
 			Expr e = Expr.expr(ctx.expr());
-			List<LetDecl> ldecl = ctx.letDecl().stream()
-					.map(x -> LetDecl.letDecl(x)).collect(Collectors.toList());
+			List<LetDecl> ldecl = ctx.letDecl().stream().map(x -> LetDecl.letDecl(x)).collect(Collectors.toList());
 			t = new LetExpr(ldecl, e);
 
 		} else {
-			Parsing.error("Error in letExpr. No expression found "
-					+ ctx.getText());
+			Parsing.error("Error in letExpr. No expression found " + ctx.getText());
 		}
 		return t;
 	}

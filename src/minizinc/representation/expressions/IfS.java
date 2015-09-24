@@ -98,9 +98,8 @@ public class IfS extends Expr {
 
 	@Override
 	public String print(int n) {
-		return nSpc(n) + "if (" + Cond.print() + ") \n" + nSpc(n) + "then \n"
-				+ Exp1.print(n + 5) + "\n" + nSpc(n) + "else \n"
-				+ Exp2.print(n + 5) + "\n" + nSpc(n) + "endif";
+		return nSpc(n) + "if (" + Cond.print() + ") \n" + nSpc(n) + "then \n" + Exp1.print(n + 5) + "\n" + nSpc(n)
+				+ "else \n" + Exp2.print(n + 5) + "\n" + nSpc(n) + "endif";
 
 	}
 

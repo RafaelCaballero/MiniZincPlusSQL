@@ -38,8 +38,8 @@ public class TypeArray extends Type {
 	 * know if the type base is a var or not. That is, with the info in this
 	 * class it could be:
 	 * <ol>
-	 * <li> {@code array [dim1...dimn] of base}, or
-	 * <li> {@code array [dim1...dimn] of var base}
+	 * <li>{@code array [dim1...dimn] of base}, or
+	 * <li>{@code array [dim1...dimn] of var base}
 	 * </ol>
 	 * This method returns the first part, until {@code of}
 	 * 
@@ -59,8 +59,8 @@ public class TypeArray extends Type {
 	 * know if the type base is a var or not. That is, with the info in this
 	 * class it could be:
 	 * <ol>
-	 * <li> {@code array [dim1...dimn] of base}, or
-	 * <li> {@code array [dim1...dimn] of var base}
+	 * <li>{@code array [dim1...dimn] of base}, or
+	 * <li>{@code array [dim1...dimn] of var base}
 	 * </ol>
 	 * This method returns the first part, until {@code of}
 	 * 
@@ -113,8 +113,7 @@ public class TypeArray extends Type {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((base == null) ? 0 : base.hashCode());
-		result = prime * result
-				+ ((dimensions == null) ? 0 : dimensions.hashCode());
+		result = prime * result + ((dimensions == null) ? 0 : dimensions.hashCode());
 		return result;
 	}
 

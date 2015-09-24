@@ -72,9 +72,8 @@ public class Substitution implements ExprTransformer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * transformation.ExprTransformer#transform(minizinc.representation.expressions
-	 * .Expr)
+	 * @see transformation.ExprTransformer#transform(minizinc.representation.
+	 * expressions .Expr)
 	 */
 	/**
 	 * Transforms variable into its value according to this substitution.

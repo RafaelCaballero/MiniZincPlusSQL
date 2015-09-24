@@ -12,12 +12,12 @@ public class And extends InfixExpr {
 
 	public And(Expr e1, Expr e2) {
 		super("/\\", e1, e2);
-		//simplify();
+		// simplify();
 	}
 
 	public And(List<? extends Expr> e) {
 		super("/\\", e);
-		//simplify();
+		// simplify();
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class And extends InfixExpr {
 
 		boolean changed = false;
 		Expr r = this;
-		
+
 		// the empty conjunction is true
 		if (e == null || e.size() == 0) {
 			r = new BoolC(true);
@@ -33,13 +33,13 @@ public class And extends InfixExpr {
 		} else if (e.size() == 1) {
 			r = e.get(0).simplify();
 		} else
-		// if it contains a false the result is false
-		if (containsFalse()) {
+			// if it contains a false the result is false
+			if (containsFalse()) {
 			r = new BoolC(false);
 			changed = true;
 		} else
-		// if it constains a true, remove it
-		if (removeTrue())
+				// if it constains a true, remove it
+				if (removeTrue())
 			changed = true;
 		else {
 			// simplify elements
@@ -90,11 +90,10 @@ public class And extends InfixExpr {
 			int n = e.size();
 			for (int i = 0; nRemoved != n - 1 && i < e.size();) {
 				Expr ej = e.get(i);
-				if (ej instanceof BoolC && ((BoolC) ej).getValue()){
+				if (ej instanceof BoolC && ((BoolC) ej).getValue()) {
 					e.remove(i);
 					nRemoved++;
-				}
-				else
+				} else
 					i++;
 			}
 		}

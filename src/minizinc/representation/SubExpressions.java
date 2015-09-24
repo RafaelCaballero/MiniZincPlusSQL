@@ -55,8 +55,7 @@ public interface SubExpressions {
 	 * @return e.subexpressions(t) if e!=null. Otherwise null;
 	 */
 
-	public default <T extends SubExpressions> T applyTransformer2(
-			ExprTransformer t, T e) {
+	public default <T extends SubExpressions> T applyTransformer2(ExprTransformer t, T e) {
 		T r = null;
 		if (e != null) {
 			e.subexpressions(t);
@@ -75,13 +74,12 @@ public interface SubExpressions {
 	 * @return null if no element of e has been transformed. Otherwise, a list
 	 *         with the same length as e. At the i-th position the list contains
 	 *         <ul>
-	 *         <li> {@code e.get(i)} if {@code t.transform(e.get(i))==null }
-	 *         <li> {@code t.transform(e.get(i)) } if
+	 *         <li>{@code e.get(i)} if {@code t.transform(e.get(i))==null }
+	 *         <li>{@code t.transform(e.get(i)) } if
 	 *         {@code t.transform(e.get(i))!==null }
 	 *         </ul>
 	 */
-	public default List<Expr> applyTransformerList(ExprTransformer t,
-			List<Expr> e) {
+	public default List<Expr> applyTransformerList(ExprTransformer t, List<Expr> e) {
 		List<Expr> r = new ArrayList<Expr>();
 		if (e != null && e.size() > 0) {
 			for (int i = 0; i < e.size(); i++) {
@@ -108,8 +106,7 @@ public interface SubExpressions {
 	 *         not applied to the elements of the list themselves, which do not
 	 *         need to be expressions.
 	 */
-	public default <T extends SubExpressions> List<T> applyTransformerList2(
-			ExprTransformer t, List<T> e) {
+	public default <T extends SubExpressions> List<T> applyTransformerList2(ExprTransformer t, List<T> e) {
 		List<T> r = new ArrayList<T>();
 		if (e != null && e.size() > 0) {
 			for (int i = 0; i < e.size(); i++) {

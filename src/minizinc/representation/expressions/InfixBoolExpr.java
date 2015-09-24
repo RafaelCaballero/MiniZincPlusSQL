@@ -61,8 +61,7 @@ public class InfixBoolExpr extends BoolExpr {
 	 *            Operator
 	 * @return Term representation
 	 */
-	public static InfixBoolExpr infixBoolExpr(BoolExpr t0, BoolExpr t1,
-			String op) {
+	public static InfixBoolExpr infixBoolExpr(BoolExpr t0, BoolExpr t1, String op) {
 		return new InfixBoolExpr(op, t0, t1);
 	}
 

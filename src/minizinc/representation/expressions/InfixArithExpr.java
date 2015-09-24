@@ -42,8 +42,7 @@ public class InfixArithExpr extends ArithExpr {
 		return e1.type();
 	}
 
-	public static InfixArithExpr infixArithExpr(ArithExpr t0, ArithExpr t1,
-			String op) {
+	public static InfixArithExpr infixArithExpr(ArithExpr t0, ArithExpr t1, String op) {
 		return new InfixArithExpr(op, t0, t1);
 	}
 

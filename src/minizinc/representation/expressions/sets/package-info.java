@@ -2,7 +2,9 @@
  * 
  */
 /**
- * Representation of MiniZinc sets. The main class is the abstract class {@link SetExpr}
+ * Representation of MiniZinc sets. The main class is the abstract class
+ * {@link SetExpr}
+ * 
  * @author rafa
  *
  */

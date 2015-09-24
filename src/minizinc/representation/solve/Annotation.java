@@ -18,8 +18,7 @@ import minizinc.representation.SubExpressions;
  * @author rafa
  *
  */
-public class Annotation implements MiniZincRepresentation, SubExpressions,
-		Cloneable {
+public class Annotation implements MiniZincRepresentation, SubExpressions, Cloneable {
 	protected ModeAnnotation ma;
 
 	/**
@@ -43,8 +42,7 @@ public class Annotation implements MiniZincRepresentation, SubExpressions,
 
 		//
 		if (Parsing.has(ctx.modeAnnotation())) {
-			ModeAnnotation ma = ModeAnnotation.modeannotation(ctx
-					.modeAnnotation());
+			ModeAnnotation ma = ModeAnnotation.modeannotation(ctx.modeAnnotation());
 			r = new Annotation(ma);
 		} else
 			Parsing.error("Annotation: " + ctx.getText());

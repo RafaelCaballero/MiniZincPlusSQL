@@ -99,8 +99,7 @@ public class ListValue extends ListExpr {
 		} else if (Parsing.has(lvc.arrayaccess())) {
 			t = new ListValue(ArrayAccess.arrayaccess(lvc.arrayaccess()));
 		} else if (Parsing.has(lvc.predOrUnionExpr())) {
-			t = new ListValue(PredOrUnionExpr.predOrUnionExpr(lvc
-					.predOrUnionExpr()));
+			t = new ListValue(PredOrUnionExpr.predOrUnionExpr(lvc.predOrUnionExpr()));
 		} else
 			Parsing.error("listValue:  " + lvc.toString());
 
@@ -128,8 +127,7 @@ public class ListValue extends ListExpr {
 		}
 
 		if (e instanceof PredOrUnionExpr) {
-			PredOrUnionExpr ep = e == null ? null : ((PredOrUnionExpr) e)
-					.clone();
+			PredOrUnionExpr ep = e == null ? null : ((PredOrUnionExpr) e).clone();
 			r = new ListValue(ep);
 		}
 		return r;

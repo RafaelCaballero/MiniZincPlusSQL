@@ -78,8 +78,7 @@ public class FloatC extends Expr {
 		if (getClass() != obj.getClass())
 			return false;
 		FloatC other = (FloatC) obj;
-		if (Double.doubleToLongBits(value) != Double
-				.doubleToLongBits(other.value))
+		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
 			return false;
 		return true;
 	}

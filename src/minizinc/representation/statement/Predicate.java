@@ -39,8 +39,7 @@ public class Predicate extends Procedure {
 	 */
 	@Override
 	public String print() {
-		return "predicate " + id.print() + "(" + printList(decls) + ")" + "=\n"
-				+ expr.print();
+		return "predicate " + id.print() + "(" + printList(decls) + ")" + "=\n" + expr.print();
 	}
 
 	public ID getName() {

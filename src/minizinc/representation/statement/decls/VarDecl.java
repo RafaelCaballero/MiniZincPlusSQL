@@ -54,8 +54,7 @@ public class VarDecl extends Decl {
 		String s = null;
 		if (declType.type() == TypeName.ARRAY) {
 			TypeArray at = (TypeArray) declType;
-			s = at.printDimensions() + " var " + at.printBase() + ':'
-					+ id.print();
+			s = at.printDimensions() + " var " + at.printBase() + ':' + id.print();
 		} else
 			s = "var " + declType.print() + ':' + id.print();
 		s += super.print();
@@ -108,8 +107,7 @@ public class VarDecl extends Decl {
 					t = new VarDecl(vt, id);
 
 			} else
-				Parsing.error("Error in vardecl;  no id found "
-						+ vctx.getText());
+				Parsing.error("Error in vardecl;  no id found " + vctx.getText());
 
 		}
 		return t;

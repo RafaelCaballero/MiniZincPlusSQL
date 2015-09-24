@@ -74,6 +74,7 @@ public class LoginForm extends javax.swing.JDialog {
 		jLabel5 = new javax.swing.JLabel();
 		jLabel6 = new javax.swing.JLabel();
 		jLabel7 = new javax.swing.JLabel();
+		jLabelFile = new javax.swing.JLabel();
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		pass = new javax.swing.JPasswordField();
@@ -84,6 +85,9 @@ public class LoginForm extends javax.swing.JDialog {
 		database = new javax.swing.JTextField();
 		String dbValue = conf.getProperty("database");
 		database.setText(dbValue);
+		String fileValue = conf.getProperty("file");
+		file = new javax.swing.JTextField();
+		file.setText(fileValue);
 		ssl = new javax.swing.JCheckBox();
 		ssl.setSelected(conf.getProperty("ssl").equals("true"));
 		save = new javax.swing.JCheckBox();
@@ -93,7 +97,7 @@ public class LoginForm extends javax.swing.JDialog {
 		setTitle("PostgreSQL connection");
 		setResizable(false);
 
-		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loginicon.png"))); // NOI18N
+		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loginicon.png")));
 
 		jLabel2.setText("Username :  ");
 
@@ -105,6 +109,7 @@ public class LoginForm extends javax.swing.JDialog {
 
 		jLabel6.setText("SSL :");
 		jLabel7.setText("Save :");
+		jLabelFile.setText("MiniZinc+SQL file:");
 
 		GridLayout experimentLayout = new GridLayout(0, 1);
 		experimentLayout.setHgap(-1);
@@ -120,6 +125,9 @@ public class LoginForm extends javax.swing.JDialog {
 		questions.add(jLabel5);
 		answers.add(database);
 
+		questions.add(jLabelFile);
+		answers.add(file);
+
 		southPanel.add(jLabel6);
 		southPanel.add(ssl);
 		southPanel.add(jLabel7);
@@ -130,10 +138,10 @@ public class LoginForm extends javax.swing.JDialog {
 
 		// SOUTH
 		jButton1.setText("Exit");
-		jButton1.setActionCommand("LoginExit");
+		jButton1.setActionCommand(ViewInterface.LOGINEXIT);
 
-		jButton2.setText("Connect");
-		jButton2.setActionCommand("LoginLogin");
+		jButton2.setText("Start");
+		jButton2.setActionCommand(ViewInterface.LOGINSTART);
 
 		/*
 		 * questions.add(jButton2); questions.add(jButton1);
@@ -156,7 +164,7 @@ public class LoginForm extends javax.swing.JDialog {
 		this.add(mainPanel, BorderLayout.CENTER);
 
 		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds((screenSize.width - 500) / 2, (screenSize.height - 220) / 2, 500, 220);
+		setBounds((screenSize.width - 500) / 2, (screenSize.height - 250) / 2, 500, 250);
 	}
 
 	// Variables declaration
@@ -169,10 +177,12 @@ public class LoginForm extends javax.swing.JDialog {
 	private javax.swing.JLabel jLabel5;
 	private javax.swing.JLabel jLabel6;
 	private javax.swing.JLabel jLabel7;
+	private javax.swing.JLabel jLabelFile;
 	private javax.swing.JPasswordField pass;
 	private javax.swing.JTextField user;
 	private javax.swing.JTextField url;
 	private javax.swing.JTextField database;
+	private javax.swing.JTextField file;
 	private javax.swing.JCheckBox ssl;
 	private javax.swing.JCheckBox save;
 
@@ -206,12 +216,17 @@ public class LoginForm extends javax.swing.JDialog {
 		return ssl.isSelected() ? "true" : "false";
 	}
 
+	public String getFile() {
+		return file.getText();
+	}
+
 	public AppConf getConfig() {
 		conf.setProperty("ssl", getSsl());
 		conf.setProperty("url", getUrl());
 		conf.setProperty("save", getSave());
 		conf.setProperty("user", getUser());
 		conf.setProperty("database", getDatabase());
+		conf.setProperty("file", getFile());
 		return conf;
 	}
 

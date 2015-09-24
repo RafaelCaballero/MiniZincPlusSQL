@@ -134,8 +134,7 @@ public abstract class Decl extends Statement {
 			t = new ArrayList<Type>();
 			t.add(new Rint());
 		} else {
-			t = dctx.range().stream().map(x -> TypeRange.range(x))
-					.collect(Collectors.toList());
+			t = dctx.range().stream().map(x -> TypeRange.range(x)).collect(Collectors.toList());
 		}
 
 		return t;

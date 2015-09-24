@@ -18,16 +18,13 @@ import minizinc.representation.expressions.sets.SetExpr;
  * @author rafa
  *
  */
-public abstract class Expr implements MiniZincRepresentation, SubExpressions,
-		Typeable, Cloneable {
-
+public abstract class Expr implements MiniZincRepresentation, SubExpressions, Typeable, Cloneable {
 
 	/**
-	 * True if the expression has been already simplified
-	 * Currently not used
+	 * True if the expression has been already simplified Currently not used
 	 */
-	protected boolean simplified=false;
-	
+	protected boolean simplified = false;
+
 	@Override
 	public String toString() {
 		return print();
@@ -120,17 +117,16 @@ public abstract class Expr implements MiniZincRepresentation, SubExpressions,
 	 * @return
 	 */
 	public static boolean isBasic(Expr ep) {
-		boolean r = 
-				ep instanceof IntC || ep instanceof PredOrUnionExpr
-				|| ep instanceof StringC || ep instanceof ID
-				|| ep instanceof BoolC || ep instanceof FloatC 
-				|| (ep instanceof Operand && ((Operand) ep).isBasic()) 
-				|| ((ep instanceof MinusArithExpr) && Expr.isBasic( ((MinusArithExpr)ep).getExpr())) ;
+		boolean r = ep instanceof IntC || ep instanceof PredOrUnionExpr || ep instanceof StringC || ep instanceof ID
+				|| ep instanceof BoolC || ep instanceof FloatC || (ep instanceof Operand && ((Operand) ep).isBasic())
+				|| ((ep instanceof MinusArithExpr) && Expr.isBasic(((MinusArithExpr) ep).getExpr()));
 		return r;
 	}
 
 	/**
-	 * Unwraps expressios eliminating round brackets and also extracting expressions inside operands
+	 * Unwraps expressios eliminating round brackets and also extracting
+	 * expressions inside operands
+	 * 
 	 * @param e
 	 * @return
 	 */
@@ -139,16 +135,15 @@ public abstract class Expr implements MiniZincRepresentation, SubExpressions,
 		boolean unwrapped;
 		do {
 			unwrapped = false;
-			if (r instanceof RbracketExpr){
+			if (r instanceof RbracketExpr) {
 				r = ((RbracketExpr) r).getExprInside();
 				unwrapped = true;
-			}
-			else if (r instanceof Operand) {
+			} else if (r instanceof Operand) {
 				r = ((Operand) r).getExpr();
 				unwrapped = true;
 			}
-		} while(unwrapped);
-		
+		} while (unwrapped);
+
 		return r;
 	}
 }

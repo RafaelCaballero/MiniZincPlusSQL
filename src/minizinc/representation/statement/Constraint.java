@@ -44,15 +44,14 @@ public class Constraint extends Statement {
 
 	public Boolean simplify() {
 		Boolean r = false;
-		Expr t2= t.simplify();
+		Expr t2 = t.simplify();
 		r = !t2.equals(t);
 		// modify the expression if it has been simplified
 		if (r)
-			t=t2;
-		
+			t = t2;
+
 		return r;
-		
-		
+
 	}
 
 	/**

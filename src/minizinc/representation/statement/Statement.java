@@ -6,8 +6,7 @@ import static minizinc.representation.Parsing.has;
 import static minizinc.representation.Parsing.error;
 import minizinc.representation.SubExpressions;
 
-public abstract class Statement implements MiniZincRepresentation,
-		SubExpressions, Cloneable {
+public abstract class Statement implements MiniZincRepresentation, SubExpressions, Cloneable {
 	private TStatement type;
 
 	public Statement(TStatement type) {

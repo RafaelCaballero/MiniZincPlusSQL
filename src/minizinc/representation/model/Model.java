@@ -11,7 +11,6 @@ import minizinc.representation.statement.Table;
 public abstract class Model implements MiniZincRepresentation, Cloneable {
 	public abstract Model clone();
 
-
 	public abstract boolean containsTables();
 
 	/**
@@ -30,7 +29,6 @@ public abstract class Model implements MiniZincRepresentation, Cloneable {
 	 * @return The table definition or null if it is not found
 	 */
 	public abstract Table getTableByName(String tablename);
-
 
 	/**
 	 * Applies a {@link ExprTransformer} to all the statements in the list.

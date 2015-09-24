@@ -26,8 +26,7 @@ public class Selection extends ModeAnnotation {
 
 	@Override
 	public String print() {
-		return name + '(' + expr.print() + "," + vc + "," + cc + ","
-				+ " complete" + ")";
+		return name + '(' + expr.print() + "," + vc + "," + cc + "," + " complete" + ")";
 	}
 
 	public static Selection selection(String name, RestSContext ctx) {

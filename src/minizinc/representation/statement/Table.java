@@ -10,13 +10,14 @@ public class Table extends Statement {
 
 	private ID id;
 	private StringC string;
-	public Table(ID id, StringC string ) {
+
+	public Table(ID id, StringC string) {
 		super(TStatement.TABLE);
 		this.id = id;
 		this.string = string;
 
 	}
-	
+
 	/**
 	 * Returns a new Constraint representing the object parsed in ctx.
 	 * 
@@ -27,23 +28,21 @@ public class Table extends Statement {
 	public static Table table(TableContext ctx) {
 		Table r = null;
 		if (Parsing.has(ctx.string()) && Parsing.hasTerminal(ctx.ID())) {
-			r = new Table(ID.IDTerm(ctx.ID()), 
-					            StringC.stringTerm(ctx.string()));
+			r = new Table(ID.IDTerm(ctx.ID()), StringC.stringTerm(ctx.string()));
 		}
 		return r;
 	}
 
-	
 	@Override
 	public String print() {
-		
-		return "table " + id.print()+" = " + string.print();
+
+		return "table " + id.print() + " = " + string.print();
 	}
-	
+
 	public String toString() {
 		return print();
 	}
-	
+
 	@Override
 	public void subexpressions(ExprTransformer t) {
 		ID id2 = this.applyTransformer2(t, id);
@@ -66,7 +65,7 @@ public class Table extends Statement {
 		Table r = null;
 		StringC s2 = string.clone();
 		ID id2 = id.clone();
-		r = new Table(id2,s2);
+		r = new Table(id2, s2);
 		return r;
 	}
 

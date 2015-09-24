@@ -1,6 +1,6 @@
 /**
- * Representing MiniZinc objects in Java.
- * This package includes common interfaces and enumerated types.
+ * Representing MiniZinc objects in Java. This package includes common
+ * interfaces and enumerated types.
  *
  * @author rafa
  *

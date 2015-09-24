@@ -59,8 +59,8 @@ public class GuardedList extends OneDimList {
 	public static GuardedList guardedList(GuardedListContext ctx) {
 		GuardedList r = null;
 		if (Parsing.has(ctx.guard())) {
-			List<InDecl> indecls = ctx.guard().inDecl().stream()
-					.map(x -> InDecl.inDecl(x)).collect(Collectors.toList());
+			List<InDecl> indecls = ctx.guard().inDecl().stream().map(x -> InDecl.inDecl(x))
+					.collect(Collectors.toList());
 			Dimension d = Dimension.dimension(ctx.nonEmptyListElems());
 			r = new GuardedList(d, indecls);
 		} else

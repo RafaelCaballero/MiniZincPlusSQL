@@ -16,7 +16,6 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 
-
 public class AreaAppender extends AppenderBase<ILoggingEvent> {
 	private Encoder<ILoggingEvent> encoder = new EchoEncoder<ILoggingEvent>();
 	private ByteArrayOutputStream out = new ByteArrayOutputStream();

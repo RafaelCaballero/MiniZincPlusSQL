@@ -41,8 +41,7 @@ public class BracketExpr extends SetVal {
 	public static BracketExpr bracketExpr(BracketExprContext ctx) {
 		BracketExpr t = null;
 		if (Parsing.has(ctx.commaList())) {
-			List<Expr> lexpr = ctx.commaList().expr().stream()
-					.map(x -> Expr.expr(x)).collect(Collectors.toList());
+			List<Expr> lexpr = ctx.commaList().expr().stream().map(x -> Expr.expr(x)).collect(Collectors.toList());
 			t = new BracketExpr(lexpr);
 		} else
 			t = new BracketExpr();

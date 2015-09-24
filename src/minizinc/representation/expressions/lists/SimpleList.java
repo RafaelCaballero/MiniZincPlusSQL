@@ -64,8 +64,7 @@ public class SimpleList extends OneDimList {
 	public static SimpleList simpleList(SimpleListContext ctx) {
 		SimpleList r = null;
 		if (Parsing.has(ctx.simpleNonEmptyList())) {
-			Dimension d = Dimension.dimension(ctx.simpleNonEmptyList()
-					.nonEmptyListElems());
+			Dimension d = Dimension.dimension(ctx.simpleNonEmptyList().nonEmptyListElems());
 			r = new SimpleList(d);
 		} else {
 			r = new SimpleList();

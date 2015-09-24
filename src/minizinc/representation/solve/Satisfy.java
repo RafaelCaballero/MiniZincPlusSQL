@@ -29,8 +29,7 @@ public class Satisfy extends Solve {
 
 	@Override
 	public Satisfy clone() {
-		Annotation ap = this.annotation == null ? null : this.annotation
-				.clone();
+		Annotation ap = this.annotation == null ? null : this.annotation.clone();
 		return new Satisfy(ap);
 	}
 

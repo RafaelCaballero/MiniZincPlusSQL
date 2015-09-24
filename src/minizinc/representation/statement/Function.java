@@ -25,8 +25,7 @@ public class Function extends Procedure {
 	/**
 	 * Constructs the representation of a MiniZinc function
 	 */
-	public Function(boolean varmark, QualName qualName, List<Decl> decls,
-			Expr expr) {
+	public Function(boolean varmark, QualName qualName, List<Decl> decls, Expr expr) {
 		super(TStatement.FUNCTION);
 		this.varmark = varmark;
 		this.qualName = qualName;
@@ -41,8 +40,8 @@ public class Function extends Procedure {
 	 */
 	@Override
 	public String print() {
-		return "function " + (varmark ? "var " : "") + qualName.print() + "("
-				+ printList(decls) + ")" + "=\n" + expr.print();
+		return "function " + (varmark ? "var " : "") + qualName.print() + "(" + printList(decls) + ")" + "=\n"
+				+ expr.print();
 	}
 
 	public QualName getName() {
@@ -93,8 +92,7 @@ public class Function extends Procedure {
 		int result = super.hashCode();
 		result = prime * result + ((decls == null) ? 0 : decls.hashCode());
 		result = prime * result + ((expr == null) ? 0 : expr.hashCode());
-		result = prime * result
-				+ ((qualName == null) ? 0 : qualName.hashCode());
+		result = prime * result + ((qualName == null) ? 0 : qualName.hashCode());
 		result = prime * result + (varmark ? 1231 : 1237);
 		return result;
 	}

@@ -74,9 +74,8 @@ public class CallGetter implements ExprTransformer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * transformation.ExprTransformer#transform(minizinc.representation.expressions
-	 * .Expr)
+	 * @see transformation.ExprTransformer#transform(minizinc.representation.
+	 * expressions .Expr)
 	 */
 	public Expr transform(Expr input) {
 

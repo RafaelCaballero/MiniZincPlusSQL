@@ -22,8 +22,7 @@ import minizinc.representation.statement.decls.VarDecl;
  * @author rafa
  *
  */
-public class LetDecl implements MiniZincRepresentation, SubExpressions,
-		Cloneable {
+public class LetDecl implements MiniZincRepresentation, SubExpressions, Cloneable {
 	private Statement statement;
 
 	/**
@@ -51,7 +50,8 @@ public class LetDecl implements MiniZincRepresentation, SubExpressions,
 	}
 
 	/**
-	 * Variable and parameter declarations, including possible initializations.<br>
+	 * Variable and parameter declarations, including possible initializations.
+	 * <br>
 	 * Grammar<br>
 	 * decl : vardecl | pardecl;<br>
 	 * 
@@ -94,13 +94,11 @@ public class LetDecl implements MiniZincRepresentation, SubExpressions,
 	public LetDecl clone() {
 		LetDecl r = null;
 		if (statement instanceof Decl) {
-			Decl statementp = statement == null ? null : ((Decl) statement)
-					.clone();
+			Decl statementp = statement == null ? null : ((Decl) statement).clone();
 			r = new LetDecl(statementp);
 		}
 		if (statement instanceof Constraint) {
-			Constraint statementp = statement == null ? null
-					: ((Constraint) statement).clone();
+			Constraint statementp = statement == null ? null : ((Constraint) statement).clone();
 			r = new LetDecl(statementp);
 		}
 
@@ -111,8 +109,7 @@ public class LetDecl implements MiniZincRepresentation, SubExpressions,
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((statement == null) ? 0 : statement.hashCode());
+		result = prime * result + ((statement == null) ? 0 : statement.hashCode());
 		return result;
 	}
 

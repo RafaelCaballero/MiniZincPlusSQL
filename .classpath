@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="resources/logback-classic-1.1.2.jar"/>
 	<classpathentry kind="lib" path="resources/logback-core-1.1.2.jar"/>
 	<classpathentry kind="lib" path="resources/slf4j-api-1.7.10.jar"/>
+	<classpathentry kind="lib" path="resources/postgresql-9.4-1203.jdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

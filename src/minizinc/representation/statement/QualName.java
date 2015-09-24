@@ -170,8 +170,7 @@ public class QualName implements MiniZincRepresentation, Cloneable {
 		if (opid2 == null && !extendsmark)
 			s = opid1.print();
 		else
-			s = opid1.print() + (extendsmark ? " extends " : ":")
-					+ opid2.print();
+			s = opid1.print() + (extendsmark ? " extends " : ":") + opid2.print();
 
 		return s;
 	}
@@ -202,8 +201,7 @@ public class QualName implements MiniZincRepresentation, Cloneable {
 			OpOrID oid2 = OpOrID.opOrID(ctx.opOrID(1));
 			r = new QualName(oid1, oid2, true);
 		} else
-			Parsing.error("QualName, unexpected opOrID number: "
-					+ ctx.opOrID().size() + "(" + ctx.getText() + " )");
+			Parsing.error("QualName, unexpected opOrID number: " + ctx.opOrID().size() + "(" + ctx.getText() + " )");
 
 		return r;
 

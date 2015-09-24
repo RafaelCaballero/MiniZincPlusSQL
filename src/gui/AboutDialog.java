@@ -32,7 +32,7 @@ public class AboutDialog extends JDialog {
 		Font fontappname = new Font("SansSerif", Font.ITALIC + Font.BOLD, 15);
 		JLabel label = new JLabel("SBuggy - Java SQL Debugger ");
 		label.setFont(fontappname);
-			
+
 		center.add(label);
 		center.add(new JLabel("Version 1.1"));
 		center.add(new JLabel("Hopla Software - 2015"));
@@ -53,4 +53,3 @@ public class AboutDialog extends JDialog {
 		setSize(500, 170);
 	}
 }
-

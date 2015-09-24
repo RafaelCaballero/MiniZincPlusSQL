@@ -1,6 +1,5 @@
 package antlr4;
 
-
 import org.antlr.v4.runtime.misc.NotNull;
 
 import minizinc.representation.model.MiniZincSQLModel;

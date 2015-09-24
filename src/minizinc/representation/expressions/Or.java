@@ -12,12 +12,12 @@ public class Or extends InfixExpr {
 
 	public Or(Expr e1, Expr e2) {
 		super("\\/", e1, e2);
-		//simplify();
+		// simplify();
 	}
 
 	public Or(List<? extends Expr> e) {
 		super("\\/", e);
-		//simplify();
+		// simplify();
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class Or extends InfixExpr {
 		} else if (e.size() == 1) {
 			r = e.get(0).simplify();
 		} else
-		// if it contains a true the result is true
-		if (containsTrue()) {
+			// if it contains a true the result is true
+			if (containsTrue()) {
 			r = new BoolC(true);
 			changed = true;
 		} else if (removeFalse())
@@ -76,8 +76,7 @@ public class Or extends InfixExpr {
 			Expr expj = e.get(j);
 			Expr exp = expj.simplify();
 			// remove false values except if it is the only value in the list
-			if (!(j == 0 && e.size() == 1) && exp instanceof BoolC
-					&& ((BoolC) exp).getValue() == false) {
+			if (!(j == 0 && e.size() == 1) && exp instanceof BoolC && ((BoolC) exp).getValue() == false) {
 				e.remove(j);
 				changed = true;
 				// j is not incremented, because this has been achieved removing
@@ -105,11 +104,10 @@ public class Or extends InfixExpr {
 			int n = e.size();
 			for (int i = 0; nRemoved != n - 1 && i < e.size();) {
 				Expr ej = e.get(i);
-				if (ej instanceof BoolC && !((BoolC) ej).getValue()){
+				if (ej instanceof BoolC && !((BoolC) ej).getValue()) {
 					e.remove(i);
 					nRemoved++;
-				}
-				else
+				} else
 					i++;
 			}
 		}

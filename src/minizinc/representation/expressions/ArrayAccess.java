@@ -53,14 +53,12 @@ public abstract class ArrayAccess extends Expr {
 	 */
 	public static ArrayAccess arrayaccess(ArrayaccessContext ctx) {
 		ArrayAccess t = null;
-		if (Parsing.hasTerminal(ctx.ID())
-				&& ctx.simpleNonEmptyList().size() == 1) {
+		if (Parsing.hasTerminal(ctx.ID()) && ctx.simpleNonEmptyList().size() == 1) {
 			ID id = ID.IDTerm(ctx.ID());
 			t = IdArrayAccess.idarrayaccess(id, ctx.simpleNonEmptyList(0));
 
 		} else if (ctx.simpleNonEmptyList().size() == 2) {
-			t = ArrayArrayAccess.arrayarrayaccess(ctx.simpleNonEmptyList(0),
-					ctx.simpleNonEmptyList(1));
+			t = ArrayArrayAccess.arrayarrayaccess(ctx.simpleNonEmptyList(0), ctx.simpleNonEmptyList(1));
 		} else
 			Parsing.error("arrayaccess " + ctx.getText());
 

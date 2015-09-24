@@ -102,12 +102,10 @@ public class PredOrUnionExpr extends Expr {
 			// pred or constructor name
 			ID id = ID.IDTerm(ctx.ID());
 			if (Parsing.has(ctx.onesection())) {
-				List<Expr> lexpr = ctx.onesection().expr().stream()
-						.map(x -> Expr.expr(x)).collect(Collectors.toList());
+				List<Expr> lexpr = ctx.onesection().expr().stream().map(x -> Expr.expr(x)).collect(Collectors.toList());
 				t = new PredOrUnionExpr(id, lexpr);
 			} else if (Parsing.has(ctx.twosections())) {
-				List<InDecl> lindecl = ctx.twosections().guard().inDecl()
-						.stream().map(x -> InDecl.inDecl(x))
+				List<InDecl> lindecl = ctx.twosections().guard().inDecl().stream().map(x -> InDecl.inDecl(x))
 						.collect(Collectors.toList());
 				Expr expr = expr(ctx.twosections().expr());
 				List<Expr> l = new ArrayList<Expr>();

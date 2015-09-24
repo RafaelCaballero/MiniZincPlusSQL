@@ -30,12 +30,9 @@ public class LetVarGetter implements ExprTransformer {
 			LetExpr le = (LetExpr) input;
 			List<LetDecl> ll = le.getDecl();
 			if (ll != null) {
-				Set<Decl> ld = ll.stream()
-						.filter(x -> x.getStatement() instanceof Decl)
-						.map(x -> (Decl) x.getStatement())
-						.collect(Collectors.toSet());
-				ids.addAll(ld.stream().map(x -> x.getID().print())
-						.collect(Collectors.toSet()));
+				Set<Decl> ld = ll.stream().filter(x -> x.getStatement() instanceof Decl)
+						.map(x -> (Decl) x.getStatement()).collect(Collectors.toSet());
+				ids.addAll(ld.stream().map(x -> x.getID().print()).collect(Collectors.toSet()));
 			}
 
 		}

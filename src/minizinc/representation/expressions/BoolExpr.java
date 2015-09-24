@@ -42,8 +42,7 @@ public abstract class BoolExpr extends Expr {
 				op = ctx.qualBoolOp().getText();
 				t = InfixBoolExpr.infixBoolExpr(t0, t1, op);
 			} else
-				Parsing.error("BoolExprContext - unexpected operator "
-						+ ctx.toString());
+				Parsing.error("BoolExprContext - unexpected operator " + ctx.toString());
 
 		} else if (Parsing.has(ctx.arithExpr(0))) {
 			ArithExprContext a0 = ctx.arithExpr(0);
@@ -58,8 +57,7 @@ public abstract class BoolExpr extends Expr {
 				op = ctx.qualArithOp().getText();
 				t = InfixArithBoolExpr.infixArithBoolExpr(t0, t1, op);
 			} else
-				Parsing.error("boolExpr - unexpected operator "
-						+ ctx.toString());
+				Parsing.error("boolExpr - unexpected operator " + ctx.toString());
 
 		} else if (Parsing.has(ctx.notExpr())) {
 			t = NotBoolExpr.notBoolExpr(ctx.notExpr());

@@ -49,11 +49,9 @@ public interface MiniZincRepresentation {
 	 * @param lt
 	 * @return
 	 */
-	public default String printList(String sep,
-			List<? extends MiniZincRepresentation> lt) {
+	public default String printList(String sep, List<? extends MiniZincRepresentation> lt) {
 		String s = "";
-		List<String> l = lt.stream().map(x -> x.print())
-				.collect(Collectors.toList());
+		List<String> l = lt.stream().map(x -> x.print()).collect(Collectors.toList());
 		if (l != null && l.size() > 1)
 			s = String.join(sep, l);
 		else if (l != null && l.size() == 1)

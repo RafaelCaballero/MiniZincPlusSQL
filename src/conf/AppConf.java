@@ -8,9 +8,8 @@ import org.slf4j.Logger;
 
 import logger.AreaAppender;
 
-
 /**
- * Manages the configuration of the app. 
+ * Manages the configuration of the app.
  *
  * @author rafa
  *
@@ -74,7 +73,7 @@ public class AppConf extends Properties {
 			int pos = decodedPath.lastIndexOf(File.separator);
 			pathFolder = pos != -1 ? decodedPath.substring(0, pos) : ".";
 			// System.out.println("path: " + pathFolder);
-			this.path = pathFolder + File.separator + "sbuggy.conf";
+			this.path = pathFolder + File.separator + "minizincsql.conf";
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,6 +120,9 @@ public class AppConf extends Properties {
 		 * Logging configuration file
 		 */
 		setProperty("logconf", pathFolder + File.separator + "logconf.xml");
+
+		// MiniZinc+SQL fileName
+		setProperty("file", "");
 
 		/**
 		 * Url with the help file

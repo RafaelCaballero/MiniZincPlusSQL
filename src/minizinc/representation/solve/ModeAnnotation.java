@@ -5,8 +5,7 @@ import minizinc.representation.MiniZincRepresentation;
 import minizinc.representation.Parsing;
 import minizinc.representation.SubExpressions;
 
-public abstract class ModeAnnotation implements MiniZincRepresentation,
-		SubExpressions, Cloneable {
+public abstract class ModeAnnotation implements MiniZincRepresentation, SubExpressions, Cloneable {
 
 	public static ModeAnnotation modeannotation(ModeAnnotationContext ctx) {
 		ModeAnnotation r = null;

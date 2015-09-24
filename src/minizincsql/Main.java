@@ -8,6 +8,7 @@ import model.Model;
 
 /**
  * Main class for the MiniZincPluSQL project.
+ * 
  * @author rafa
  *
  */

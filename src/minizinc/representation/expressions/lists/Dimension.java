@@ -19,8 +19,7 @@ import minizinc.representation.expressions.Expr;
  * @author rafa
  *
  */
-public class Dimension implements MiniZincRepresentation, SubExpressions,
-		Cloneable {
+public class Dimension implements MiniZincRepresentation, SubExpressions, Cloneable {
 	protected List<Expr> exprs;
 
 	/**

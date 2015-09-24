@@ -116,8 +116,7 @@ public class Operand extends ArithExpr {
 			RbracketExpr re = RbracketExpr.rbracketArithExpr(ctx.arithExpr());
 			op = new Operand(re);
 		} else if (Parsing.has(ctx.predOrUnionExpr()))
-			op = new Operand(PredOrUnionExpr.predOrUnionExpr(ctx
-					.predOrUnionExpr()));
+			op = new Operand(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
 		return op;
 	}
 
@@ -158,8 +157,7 @@ public class Operand extends ArithExpr {
 		}
 
 		if (e instanceof PredOrUnionExpr) {
-			PredOrUnionExpr exprp = e == null ? null : ((PredOrUnionExpr) e)
-					.clone();
+			PredOrUnionExpr exprp = e == null ? null : ((PredOrUnionExpr) e).clone();
 			r = new Operand(exprp);
 		}
 		return r;

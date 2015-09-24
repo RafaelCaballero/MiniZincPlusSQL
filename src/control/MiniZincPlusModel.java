@@ -22,22 +22,21 @@ public class MiniZincPlusModel {
 
 	private String filename;
 	private MiniZincSQLModel model;
-	
- public MiniZincPlusModel(String filename) throws Exception {
-	 	this.model = null;
-	 	this.filename = filename;
+
+	public MiniZincPlusModel(String filename) throws Exception {
+		this.model = null;
+		this.filename = filename;
 		String inputFile = null;
 		inputFile = filename;
-		
+
 		// check if the file exists
 		File f = new File(inputFile);
 
 		if (!f.exists()) {
-				logger.error("File  {} not found!", inputFile);
-				throw new IOException("File " + inputFile + " not found!");
-			}
-		
- 
+			logger.error("File  {} not found!", inputFile);
+			throw new IOException("File " + inputFile + " not found!");
+		}
+
 		InputStream is = System.in;
 		if (inputFile != null)
 			is = new FileInputStream(inputFile);
@@ -57,12 +56,12 @@ public class MiniZincPlusModel {
 		this.model = extractor.getModel();
 
 	}
- 
- /**
- * @return The parsed model
- */
-public MiniZincSQLModel getModel() {
-	 return model;
- }
+
+	/**
+	 * @return The parsed model
+	 */
+	public MiniZincSQLModel getModel() {
+		return model;
+	}
 
 }

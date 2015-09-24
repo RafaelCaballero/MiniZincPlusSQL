@@ -91,8 +91,7 @@ public class BoolVal extends BoolExpr {
 		} else if (Parsing.has(ctx.letExpr())) {
 			t = new BoolVal(LetExpr.letExpr(ctx.letExpr()));
 		} else if (Parsing.has(ctx.predOrUnionExpr())) {
-			t = new BoolVal(PredOrUnionExpr.predOrUnionExpr(ctx
-					.predOrUnionExpr()));
+			t = new BoolVal(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
 		} else
 			Parsing.error("boolVal " + ctx.getText());
 		return t;
@@ -126,8 +125,7 @@ public class BoolVal extends BoolExpr {
 			r = new BoolVal(ep);
 		}
 		if (e instanceof PredOrUnionExpr) {
-			PredOrUnionExpr ep = (e == null ? null : ((PredOrUnionExpr) e)
-					.clone());
+			PredOrUnionExpr ep = (e == null ? null : ((PredOrUnionExpr) e).clone());
 			r = new BoolVal(ep);
 		}
 		return r;

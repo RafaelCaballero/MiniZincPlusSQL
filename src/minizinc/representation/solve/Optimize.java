@@ -39,8 +39,7 @@ public class Optimize extends Solve {
 				e = Expr.expr(ctx.maximize().expr());
 				r = new Optimize(a, "maximize", e);
 			} else
-				Parsing.error("optimize: missing expr to maximize "
-						+ ctx.getText());
+				Parsing.error("optimize: missing expr to maximize " + ctx.getText());
 
 		} else if (Parsing.has(ctx.minimize())) {
 			if (Parsing.has(ctx.minimize().expr())) {
@@ -48,11 +47,9 @@ public class Optimize extends Solve {
 				r = new Optimize(a, "minimize", e);
 
 			} else
-				Parsing.error("optimize: missing expr to minimize "
-						+ ctx.getText());
+				Parsing.error("optimize: missing expr to minimize " + ctx.getText());
 		} else
-			Parsing.error("optimize: neither maximize nor minimize "
-					+ ctx.getText());
+			Parsing.error("optimize: neither maximize nor minimize " + ctx.getText());
 
 		return r;
 	}
@@ -60,8 +57,7 @@ public class Optimize extends Solve {
 	@Override
 	public Optimize clone() {
 		Optimize r = null;
-		Annotation ap = this.annotation == null ? null : this.annotation
-				.clone();
+		Annotation ap = this.annotation == null ? null : this.annotation.clone();
 		Expr exprp = expr == null ? null : expr.clone();
 		String maxminp = maxmin;
 		r = new Optimize(ap, maxminp, exprp);

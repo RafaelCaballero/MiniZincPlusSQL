@@ -59,16 +59,14 @@ public class IdArrayAccess extends ArrayAccess {
 	 *            list of indexes
 	 * @return The Java representation
 	 */
-	public static IdArrayAccess idarrayaccess(ID id,
-			SimpleNonEmptyListContext ctx) {
+	public static IdArrayAccess idarrayaccess(ID id, SimpleNonEmptyListContext ctx) {
 		IdArrayAccess t = null;
 		int n = ctx.nonEmptyListElems().expr().size();
 		if (n != 0) {
 			Dimension indexes = Dimension.dimension(ctx.nonEmptyListElems());
 			t = new IdArrayAccess(id, indexes.getExprs());
 		} else
-			Parsing.error("IdArrayAccess (Id: " + id + ") with 0 indexes "
-					+ ctx.getText());
+			Parsing.error("IdArrayAccess (Id: " + id + ") with 0 indexes " + ctx.getText());
 		return t;
 	}
 

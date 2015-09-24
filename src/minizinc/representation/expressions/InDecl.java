@@ -23,8 +23,7 @@ import minizinc.representation.expressions.sets.SetExpr;
  * @author rafa
  *
  */
-public class InDecl implements MiniZincRepresentation, SubExpressions,
-		Cloneable {
+public class InDecl implements MiniZincRepresentation, SubExpressions, Cloneable {
 	/*
 	 * Non-empty list of identifiers
 	 */
@@ -87,8 +86,7 @@ public class InDecl implements MiniZincRepresentation, SubExpressions,
 	public static InDecl inDecl(InDeclContext ctx) {
 		InDecl t = null;
 		if (Parsing.has(ctx.setExpr())) {
-			List<ID> ids = ctx.ID().stream().map(x -> ID.IDTerm(x))
-					.collect(Collectors.toList());
+			List<ID> ids = ctx.ID().stream().map(x -> ID.IDTerm(x)).collect(Collectors.toList());
 			SetExpr sexpr = SetExpr.setExpr(ctx.setExpr());
 			if (Parsing.has(ctx.whereCond())) {
 				BoolExpr bexpr = BoolExpr.boolExpr(ctx.whereCond().boolExpr());

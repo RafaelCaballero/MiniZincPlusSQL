@@ -17,15 +17,14 @@ public class HelpFile {
 		FileReader reader = null;
 		try {
 			File file = new File(getClass().getResource(helpFile).getFile());
-			//Desktop.getDesktop().browse(file.toURI());
+			// Desktop.getDesktop().browse(file.toURI());
 
-			
 			reader = new FileReader(file);
 			char[] chars = new char[(int) file.length()];
 			reader.read(chars);
 			helpContent = new String(chars);
 			reader.close();
-			
+
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			Logger.getLogger(HelpFile.class.getName()).log(Level.SEVERE, null, ex);

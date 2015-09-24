@@ -45,8 +45,7 @@ public class InfixArithBoolExpr extends BoolExpr {
 	 * @return InfixArithComplexBoolExpr representation
 	 */
 
-	public static InfixArithBoolExpr infixArithBoolExpr(ArithExpr t0,
-			ArithExpr t1, String op) {
+	public static InfixArithBoolExpr infixArithBoolExpr(ArithExpr t0, ArithExpr t1, String op) {
 		return new InfixArithBoolExpr(op, t0, t1);
 	}
 
@@ -116,11 +115,9 @@ public class InfixArithBoolExpr extends BoolExpr {
 		if (e1 != null && e2 != null) {
 			Expr e1s = e1.simplify();
 			Expr e2s = e2.simplify();
-			if (e1s != null && e2s != null && !e1s.equals(e1)
-					|| !e2s.equals(e2)) {
+			if (e1s != null && e2s != null && !e1s.equals(e1) || !e2s.equals(e2)) {
 				if (e1s instanceof ArithExpr && e2s instanceof ArithExpr) {
-					r = new InfixArithBoolExpr(op, (ArithExpr) e1s,
-							(ArithExpr) e2s);
+					r = new InfixArithBoolExpr(op, (ArithExpr) e1s, (ArithExpr) e2s);
 					r = r.simplify();
 				}
 			}
@@ -132,23 +129,20 @@ public class InfixArithBoolExpr extends BoolExpr {
 	public static Expr simplifyOp(Expr ri, String op, Expr e1s, Expr e2s) {
 		Expr r = ri;
 
-		//  a=a becomes true
-		if (e1s!=null && e2s!=null && e1s.equals(e2s) && (op.equals("=") || op.equals("==")))
+		// a=a becomes true
+		if (e1s != null && e2s != null && e1s.equals(e2s) && (op.equals("=") || op.equals("==")))
 			r = new BoolC(true);
-		else 	
-		if ((e1s instanceof BoolC) && ((BoolC) e1s).getValue()) {
+		else if ((e1s instanceof BoolC) && ((BoolC) e1s).getValue()) {
 			r = e2s;
 		} else if (Expr.isBasic(e1s) && Expr.isBasic(e2s))
-			if ((e1s instanceof IntC && e2s instanceof IntC) || 
-				 (e1s instanceof BoolC && e2s instanceof BoolC) ||
-				 (e1s instanceof FloatC && e2s instanceof FloatC)) {
+			if ((e1s instanceof IntC && e2s instanceof IntC) || (e1s instanceof BoolC && e2s instanceof BoolC)
+					|| (e1s instanceof FloatC && e2s instanceof FloatC)) {
 				if (op.equals("=") || op.equals("==")) {
 					r = new BoolC(e1s.equals(e2s));
 				} else if (op.equals("!="))
 					r = new BoolC(!e1s.equals(e2s));
-				else if (op.equals(">") || op.equals("<") || op.equals(">=")
-						|| op.equals("<=") || op.equals("+") || op.equals("-")
-						|| op.equals("*")) {
+				else if (op.equals(">") || op.equals("<") || op.equals(">=") || op.equals("<=") || op.equals("+")
+						|| op.equals("-") || op.equals("*")) {
 					// unfold operands
 					if (e1s instanceof Operand)
 						e1s = ((Operand) e1s).getExpr();

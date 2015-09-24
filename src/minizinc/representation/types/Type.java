@@ -7,8 +7,7 @@ import minizinc.representation.Typeable;
 import minizinc.representation.expressions.Expr;
 import minizinc.representation.expressions.ID;
 
-public abstract class Type implements MiniZincRepresentation, Typeable,
-		Cloneable {
+public abstract class Type implements MiniZincRepresentation, Typeable, Cloneable {
 
 	/**
 	 * Obtains the representation of a type name as an element of class

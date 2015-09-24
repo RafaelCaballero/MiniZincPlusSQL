@@ -82,8 +82,7 @@ public class ArrayArrayAccess extends ArrayAccess {
 	 *            The list of indexes [e1...em]
 	 * @return The Java representation
 	 */
-	public static ArrayArrayAccess arrayarrayaccess(
-			SimpleNonEmptyListContext ctx1, SimpleNonEmptyListContext ctx2) {
+	public static ArrayArrayAccess arrayarrayaccess(SimpleNonEmptyListContext ctx1, SimpleNonEmptyListContext ctx2) {
 		ArrayArrayAccess t = null;
 		int n = ctx2.nonEmptyListElems().expr().size();
 		if (n != 0) {
@@ -91,8 +90,7 @@ public class ArrayArrayAccess extends ArrayAccess {
 			Dimension indexes = Dimension.dimension(ctx2.nonEmptyListElems());
 			t = new ArrayArrayAccess(array.getExprs(), indexes.getExprs());
 		} else
-			Parsing.error("ArrayArrayAccess with 0 indexes " + ctx1.getText()
-					+ " | " + ctx2.getText());
+			Parsing.error("ArrayArrayAccess with 0 indexes " + ctx1.getText() + " | " + ctx2.getText());
 
 		return t;
 	}

@@ -55,8 +55,7 @@ public abstract class ArithExpr extends Expr {
 			ArithExprContext a0 = ctx.arithExpr(0);
 			ArithExprContext a1 = ctx.arithExpr(1);
 			if (a0 == null || a1 == null)
-				Parsing.error("arithComplexExpr (null operand):  "
-						+ ctx.toString());
+				Parsing.error("arithComplexExpr (null operand):  " + ctx.toString());
 			else {
 				ArithExpr t0 = ArithExpr.arithExpr(a0);
 				ArithExpr t1 = ArithExpr.arithExpr(a1);

@@ -59,8 +59,8 @@ public class GuardedSet extends SetVal {
 		GuardedSet r = null;
 		if (Parsing.has(ctx.expr()) && Parsing.has(ctx.guard())) {
 			Expr expr = Expr.expr(ctx.expr());
-			List<InDecl> lindecl = ctx.guard().inDecl().stream()
-					.map(x -> InDecl.inDecl(x)).collect(Collectors.toList());
+			List<InDecl> lindecl = ctx.guard().inDecl().stream().map(x -> InDecl.inDecl(x))
+					.collect(Collectors.toList());
 			r = new GuardedSet(expr, lindecl);
 
 		} else
