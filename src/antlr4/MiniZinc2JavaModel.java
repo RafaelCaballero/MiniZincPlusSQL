@@ -2,7 +2,7 @@ package antlr4;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
-import minizinc.representation.model.MiniZincSQLModel;
+import minizinc.representation.mznmodel.MiniZincSQLModel;
 
 @SuppressWarnings("deprecation")
 public class MiniZinc2JavaModel extends MiniZincGrammarBaseListener {

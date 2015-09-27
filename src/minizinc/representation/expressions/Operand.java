@@ -9,8 +9,8 @@ import minizinc.representation.Parsing;
 import minizinc.representation.TypeName;
 
 /**
- * operand : ID | integer | real | arrayaccess | ifExpr | letExpr | '('arithExpr
- * ')' | predOrUnionExpr ;
+ * operand : ID | integer | real | string | arrayaccess | ifExpr | letExpr | '('arithExpr
+ * ')' | predOrUnionExpr | qualified;
  *
  * @author rafa
  *
@@ -57,6 +57,14 @@ public class Operand extends ArithExpr {
 	}
 
 	public Operand(PredOrUnionExpr e) {
+		this.e = e;
+	}
+
+	public Operand(Qualified e) {
+		this.e = e;
+	}
+
+	public Operand(StringC e) {
 		this.e = e;
 	}
 
@@ -117,6 +125,12 @@ public class Operand extends ArithExpr {
 			op = new Operand(re);
 		} else if (Parsing.has(ctx.predOrUnionExpr()))
 			op = new Operand(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
+        else if (Parsing.has(ctx.string()))
+		     op = new Operand(StringC.stringTerm(ctx.string()));
+        else if (Parsing.has(ctx.qualified()))
+		     op = new Operand(Qualified.qualified(ctx.qualified()));
+		else 
+			Parsing.error("operand, unexpected " +  ctx.getText());
 		return op;
 	}
 
@@ -160,6 +174,17 @@ public class Operand extends ArithExpr {
 			PredOrUnionExpr exprp = e == null ? null : ((PredOrUnionExpr) e).clone();
 			r = new Operand(exprp);
 		}
+
+		if (e instanceof StringC) {
+			StringC exprp = e == null ? null : ((StringC) e).clone();
+			r = new Operand(exprp);
+		}
+
+		if (e instanceof Qualified) {
+			Qualified exprp = e == null ? null : ((Qualified) e).clone();
+			r = new Operand(exprp);
+		}
+
 		return r;
 	}
 

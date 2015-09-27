@@ -13,8 +13,10 @@ import gui.MainFrame;
 import gui.ViewInterface;
 import gui.statusbar.StatusBarMessage;
 import logger.AreaAppender;
+import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.Model;
 import model.connection.ConnectionData;
+import transformation.EliminateTupleVariables;
 import conf.AppConf;
 
 public class Control implements ActionListener, MouseListener {
@@ -120,7 +122,12 @@ public class Control implements ActionListener, MouseListener {
 					// parse the model
 					String fileName = cData.getProps().getProperty("file");
 					try {
-						MiniZincPlusModel mp = mod.process(fileName);
+						logger.info("Parsing {}",fileName);
+						MiniZincSQLModel mp = mod.process(fileName);
+						logger.info("End of parsing\n, Source Model:\n {}",mp);
+						logger.info("\nSolving...");
+						mod.solver(mp,0,0);
+						
 					} catch (Exception e) {
 						view.displayError("Error processing file  ",e);
 						logger.error("Error processing file {}",fileName);
@@ -136,4 +143,5 @@ public class Control implements ActionListener, MouseListener {
 
 	}
 
+	
 }

@@ -2,6 +2,10 @@ package minizinc.representation;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.slf4j.Logger;
+
+import control.Control;
+import logger.AreaAppender;
 
 /**
  * Classes that represent MiniZinc terms in Java
@@ -10,6 +14,9 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  *
  */
 public class Parsing {
+	
+	private static final Logger logger = AreaAppender.getLogger(Parsing.class);
+
 
 	public static boolean has(ParserRuleContext ctx) {
 		return ctx != null;
@@ -27,8 +34,8 @@ public class Parsing {
 	 * @param error
 	 */
 	public static void error(String error) {
-		String e = "Parser error. Unexpected " + error;
-		System.out.println(e);
+		//String e = "Parser error. Unexpected " + error;
+		logger.error("Parser error. Unexpected {}",error);
 	}
 
 }

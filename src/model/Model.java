@@ -9,9 +9,11 @@ import conf.AppConf;
 import control.MiniZincPlusModel;
 import gui.MainFrame;
 import logger.AreaAppender;
+import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.connection.ConnectionData;
 import model.connection.SQLConnector;
 import model.relation.Database;
+import transformation.EliminateTupleVariables;
 
 public class Model {
 
@@ -90,10 +92,46 @@ public class Model {
 	 * @param fileName
 	 * @throws Exception 
 	 */
-	public MiniZincPlusModel process(String fileName) throws Exception {
+	public MiniZincSQLModel process(String fileName) throws Exception {
 		MiniZincPlusModel mp = new MiniZincPlusModel(fileName);  
-		return mp;
+		return mp.getModel();
 		
 	}
+	
+	/**
+	 * Solver for MiniZincPlus
+	 * @param mp Source model
+	 * @param i Number of answers in MiniZinc
+	 * @param j Number of answers in SQL
+	 */
+	public void solver(MiniZincSQLModel mp, int i, int j) {
+		preprocess(mp);
+		firstPhase();
+		secondPhase();
+		thirdPhase();
+	}
+
+	private void preprocess(MiniZincSQLModel mp) {
+		EliminateTupleVariables etv = new EliminateTupleVariables(mp,connector,db);
+		mp.applyTransformer(etv, mp.getDecl());
+		
+		
+	}
+
+	private void thirdPhase() {
+		
+		
+	}
+
+	private void secondPhase() {
+		
+		
+	}
+
+	private void firstPhase() {
+		
+		
+	}
+
 
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package minizinc.representation.model;
+package minizinc.representation.mznmodel;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -26,7 +26,7 @@ import minizinc.representation.statement.decls.VarDecl;
  * @author rafa
  *
  */
-public class MiniZincSQLModel extends Model {
+public class MiniZincSQLModel extends MznModel {
 	protected List<Comment> comment;
 	protected List<Table> table;
 	protected List<Constraint> constraint;
@@ -538,6 +538,21 @@ public class MiniZincSQLModel extends Model {
 					r = true;
 				}
 			}
+		return r;
+	}
+	
+	@Override 
+	public String toString() {
+		String r = "";
+		r+=printStatements("Includes", include);
+		r+=printStatements("Initializations",init);
+		r+=printStatements("SQL table declarations", table);
+		r+=printStatements("Var.and param declarations", decl);
+		r+=printStatements("User functions",function);
+		r+=printStatements("User predicates",predicate);
+		r+=printStatements("Constraints",constraint);
+		r+=printStatements("Solve statement", solve);
+		r+=printStatements("output statement", output);
 		return r;
 	}
 }

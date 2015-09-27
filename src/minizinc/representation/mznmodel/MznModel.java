@@ -1,4 +1,4 @@
-package minizinc.representation.model;
+package minizinc.representation.mznmodel;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import minizinc.representation.statement.Comment;
 import minizinc.representation.statement.Statement;
 import minizinc.representation.statement.Table;
 
-public abstract class Model implements MiniZincRepresentation, Cloneable {
-	public abstract Model clone();
+public abstract class MznModel implements MiniZincRepresentation, Cloneable {
+	public abstract MznModel clone();
 
 	public abstract boolean containsTables();
 

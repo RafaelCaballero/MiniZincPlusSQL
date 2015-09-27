@@ -15,8 +15,14 @@ import antlr4.MiniZinc2JavaModel;
 import antlr4.MiniZincGrammarLexer;
 import antlr4.MiniZincGrammarParser;
 import logger.AreaAppender;
-import minizinc.representation.model.MiniZincSQLModel;
+import minizinc.representation.mznmodel.MiniZincSQLModel;
 
+/**
+ * Represents a MiniZinc model include SQL tables, dot notation and 
+ * constraints
+ * @author rafa
+ *
+ */
 public class MiniZincPlusModel {
 	private static final Logger logger = AreaAppender.getLogger(MiniZincPlusModel.class);
 

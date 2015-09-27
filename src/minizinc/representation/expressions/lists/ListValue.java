@@ -68,14 +68,22 @@ public class ListValue extends ListExpr {
 		this.e = e;
 	}
 
+	/**
+	 * An function can return a list.
+	 * 
+	 * @param expr
+	 *            An Qualified  value representing the list value
+	 */
+	public ListValue(Qualified expr) {
+		e = expr;
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see minizinc.representation.MiniZincRepresentation#print()
 	 */
 	@Override
-	public String print() {
-		// TODO Auto-generated method stub
+	public String print() {		
 		return e.print();
 	}
 
@@ -100,6 +108,8 @@ public class ListValue extends ListExpr {
 			t = new ListValue(ArrayAccess.arrayaccess(lvc.arrayaccess()));
 		} else if (Parsing.has(lvc.predOrUnionExpr())) {
 			t = new ListValue(PredOrUnionExpr.predOrUnionExpr(lvc.predOrUnionExpr()));
+		} else if (Parsing.has(lvc.qualified())) {
+			t = new ListValue(Qualified.qualified(lvc.qualified()));
 		} else
 			Parsing.error("listValue:  " + lvc.toString());
 
@@ -128,6 +138,11 @@ public class ListValue extends ListExpr {
 
 		if (e instanceof PredOrUnionExpr) {
 			PredOrUnionExpr ep = e == null ? null : ((PredOrUnionExpr) e).clone();
+			r = new ListValue(ep);
+		}
+		
+		if (e instanceof Qualified) {
+			Qualified ep = e == null ? null : ((Qualified) e).clone();
 			r = new ListValue(ep);
 		}
 		return r;

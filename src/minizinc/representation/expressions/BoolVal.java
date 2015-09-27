@@ -10,7 +10,7 @@ import minizinc.representation.Parsing;
 /**
  * Atomic bool value. It is an abstract class that combines the union given by
  * the following grammar:<br>
- * boolVal : | '(' boolExpr ')' | ID | BOOL | arrayaccess | ifExpr | letExpr |
+ * boolVal : | '(' boolExpr ')' | ID | BOOL | arrayaccess | ifExpr | letExpr | qualified
  * predOrUnionExpr | guardExpr ;
  * 
  * @author rafa
@@ -44,6 +44,10 @@ public class BoolVal extends BoolExpr {
 	}
 
 	public BoolVal(PredOrUnionExpr expr) {
+		e = expr;
+	}
+
+	public BoolVal(Qualified expr) {
 		e = expr;
 	}
 
@@ -92,6 +96,9 @@ public class BoolVal extends BoolExpr {
 			t = new BoolVal(LetExpr.letExpr(ctx.letExpr()));
 		} else if (Parsing.has(ctx.predOrUnionExpr())) {
 			t = new BoolVal(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
+		} else if (Parsing.has(ctx.qualified())) {
+			Qualified q = Qualified.qualified(ctx.qualified());
+			t = new BoolVal(q);
 		} else
 			Parsing.error("boolVal " + ctx.getText());
 		return t;
@@ -124,11 +131,16 @@ public class BoolVal extends BoolExpr {
 			LetExpr ep = (e == null ? null : ((LetExpr) e).clone());
 			r = new BoolVal(ep);
 		}
+		if (e instanceof Qualified) {
+			Qualified ep = (e == null ? null : ((Qualified) e).clone());
+			r = new BoolVal(ep);
+		}
 		if (e instanceof PredOrUnionExpr) {
 			PredOrUnionExpr ep = (e == null ? null : ((PredOrUnionExpr) e).clone());
 			r = new BoolVal(ep);
 		}
-		return r;
+		
+        return r;
 	}
 
 	@Override

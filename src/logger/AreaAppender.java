@@ -69,7 +69,7 @@ public class AreaAppender extends AppenderBase<ILoggingEvent> {
 
 		Logger logger = (Logger) LoggerFactory.getLogger(class1);
 		logger.addAppender(appender);
-		logger.setLevel(Level.INFO);
+		logger.setLevel(Level.TRACE);
 		logger.setAdditive(false); /* set to true if root should log too */
 
 		return logger;

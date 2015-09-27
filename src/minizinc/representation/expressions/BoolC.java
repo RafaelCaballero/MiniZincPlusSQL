@@ -67,7 +67,6 @@ public class BoolC extends Expr {
 
 	@Override
 	public BoolC clone() {
-		// TODO Auto-generated method stub
 		return new BoolC(value);
 	}
 
