@@ -9,14 +9,12 @@ import java.sql.SQLException;
 
 import org.slf4j.Logger;
 
-import gui.MainFrame;
 import gui.ViewInterface;
 import gui.statusbar.StatusBarMessage;
 import logger.AreaAppender;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.Model;
 import model.connection.ConnectionData;
-import transformation.EliminateTupleVariables;
 import conf.AppConf;
 
 public class Control implements ActionListener, MouseListener {
@@ -119,19 +117,19 @@ public class Control implements ActionListener, MouseListener {
 
 				} else
 					view.setConnected(cData, mod.getDB());
-					// parse the model
-					String fileName = cData.getProps().getProperty("file");
-					try {
-						logger.info("Parsing {}",fileName);
-						MiniZincSQLModel mp = mod.process(fileName);
-						logger.info("End of parsing\n, Source Model:\n {}",mp);
-						logger.info("\nSolving...");
-						mod.solver(mp,0,0);
-						
-					} catch (Exception e) {
-						view.displayError("Error processing file  ",e);
-						logger.error("Error processing file {}",fileName);
-					}
+				// parse the model
+				String fileName = cData.getProps().getProperty("file");
+				try {
+					logger.info("Parsing {}", fileName);
+					MiniZincSQLModel mp = mod.process(fileName);
+					logger.info("End of parsing\n, Source Model:\n {}", mp);
+					logger.info("\nSolving...");
+					mod.solver(mp, 0, 0);
+
+				} catch (Exception e) {
+					view.displayError("Error processing file  ", e);
+					logger.error("Error processing file {}", fileName);
+				}
 			} catch (ClassNotFoundException e) {
 				view.displayError("Driver not found ", e);
 				logger.error("Driver not found!");
@@ -143,5 +141,4 @@ public class Control implements ActionListener, MouseListener {
 
 	}
 
-	
 }

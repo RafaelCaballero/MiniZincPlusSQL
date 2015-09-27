@@ -1,5 +1,8 @@
 package model.relation;
 
+import minizinc.representation.types.Type;
+import minizinc.representation.types.TypeID;
+
 /**
  * Data identifying a column in a database
  * 
@@ -7,18 +10,20 @@ package model.relation;
  *
  */
 public class ColumnMeta {
-	private int columnType;
+	private Type columnType;
 	private String columnName;
+	private boolean mixed;
 
-	public ColumnMeta(int columnType, String columnName) {
+	public ColumnMeta(Type columnType, String columnName) {
 		this.columnType = columnType;
 		this.columnName = columnName;
+		this.mixed = !(columnType instanceof TypeID);
 	}
 
 	/**
 	 * @return the columnType
 	 */
-	public int getColumnType() {
+	public Type getColumnType() {
 		return columnType;
 	}
 
@@ -29,25 +34,16 @@ public class ColumnMeta {
 		return columnName;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((columnName == null) ? 0 : columnName.hashCode());
-		result = prime * result + columnType;
+		result = prime * result + ((columnType == null) ? 0 : columnType.hashCode());
+		result = prime * result + (mixed ? 1231 : 1237);
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -62,9 +58,18 @@ public class ColumnMeta {
 				return false;
 		} else if (!columnName.equals(other.columnName))
 			return false;
-		if (columnType != other.columnType)
+		if (columnType == null) {
+			if (other.columnType != null)
+				return false;
+		} else if (!columnType.equals(other.columnType))
+			return false;
+		if (mixed != other.mixed)
 			return false;
 		return true;
+	}
+
+	public boolean getMixed() {
+		return mixed;
 	}
 
 }

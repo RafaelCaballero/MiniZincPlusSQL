@@ -28,6 +28,13 @@ public class TypeID extends Type {
 		this.id = id;
 	}
 
+	/**
+	 * Constructor: name of the type
+	 */
+	public TypeID(String id) {
+		this.id = new ID(id);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

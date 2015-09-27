@@ -72,18 +72,19 @@ public class ListValue extends ListExpr {
 	 * An function can return a list.
 	 * 
 	 * @param expr
-	 *            An Qualified  value representing the list value
+	 *            An Qualified value representing the list value
 	 */
 	public ListValue(Qualified expr) {
 		e = expr;
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see minizinc.representation.MiniZincRepresentation#print()
 	 */
 	@Override
-	public String print() {		
+	public String print() {
 		return e.print();
 	}
 
@@ -140,7 +141,7 @@ public class ListValue extends ListExpr {
 			PredOrUnionExpr ep = e == null ? null : ((PredOrUnionExpr) e).clone();
 			r = new ListValue(ep);
 		}
-		
+
 		if (e instanceof Qualified) {
 			Qualified ep = e == null ? null : ((Qualified) e).clone();
 			r = new ListValue(ep);

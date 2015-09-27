@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 
 import conf.AppConf;
 import control.MiniZincPlusModel;
-import gui.MainFrame;
 import logger.AreaAppender;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.connection.ConnectionData;
@@ -89,49 +88,47 @@ public class Model {
 
 	/**
 	 * The main work
+	 * 
 	 * @param fileName
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public MiniZincSQLModel process(String fileName) throws Exception {
-		MiniZincPlusModel mp = new MiniZincPlusModel(fileName);  
+		MiniZincPlusModel mp = new MiniZincPlusModel(fileName);
 		return mp.getModel();
-		
-	}
-	
-	/**
-	 * Solver for MiniZincPlus
-	 * @param mp Source model
-	 * @param i Number of answers in MiniZinc
-	 * @param j Number of answers in SQL
-	 */
-	public void solver(MiniZincSQLModel mp, int i, int j) {
-		preprocess(mp);
-		firstPhase();
-		secondPhase();
-		thirdPhase();
+
 	}
 
-	private void preprocess(MiniZincSQLModel mp) {
-		EliminateTupleVariables etv = new EliminateTupleVariables(mp,connector,db);
-		mp.applyTransformer(etv, mp.getDecl());
-		
-		
+	/**
+	 * Solver for MiniZincPlus
+	 * 
+	 * @param mp
+	 *            Source model
+	 * @param i
+	 *            Number of answers in MiniZinc
+	 * @param j
+	 *            Number of answers in SQL
+	 */
+	public void solver(MiniZincSQLModel mp, int i, int j) {
+		EliminateTupleVariables etv = new EliminateTupleVariables(mp, connector, db);
+		if (etv.aborted()) {
+			logger.error("Preprocess error, aborting...");
+		} else {
+			firstPhase();
+			secondPhase();
+			thirdPhase();
+		}
 	}
 
 	private void thirdPhase() {
-		
-		
+
 	}
 
 	private void secondPhase() {
-		
-		
+
 	}
 
 	private void firstPhase() {
-		
-		
-	}
 
+	}
 
 }

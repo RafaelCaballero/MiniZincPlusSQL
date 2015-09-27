@@ -55,6 +55,15 @@ public class TypeArray extends Type {
 	}
 
 	/**
+	 * Base type
+	 * 
+	 * @return
+	 */
+	public Type getBase() {
+		return base;
+	}
+
+	/**
 	 * This is used because the type cannot be written complete since we don't
 	 * know if the type base is a var or not. That is, with the info in this
 	 * class it could be:

@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.slf4j.Logger;
 
-import control.Control;
 import logger.AreaAppender;
 
 /**
@@ -14,9 +13,8 @@ import logger.AreaAppender;
  *
  */
 public class Parsing {
-	
-	private static final Logger logger = AreaAppender.getLogger(Parsing.class);
 
+	private static final Logger logger = AreaAppender.getLogger(Parsing.class);
 
 	public static boolean has(ParserRuleContext ctx) {
 		return ctx != null;
@@ -34,8 +32,8 @@ public class Parsing {
 	 * @param error
 	 */
 	public static void error(String error) {
-		//String e = "Parser error. Unexpected " + error;
-		logger.error("Parser error. Unexpected {}",error);
+		// String e = "Parser error. Unexpected " + error;
+		logger.error("Parser error. Unexpected {}", error);
 	}
 
 }

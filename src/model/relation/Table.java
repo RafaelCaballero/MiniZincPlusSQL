@@ -1,7 +1,6 @@
 package model.relation;
 
 import java.sql.Connection;
-import java.util.Set;
 
 public class Table extends Relation {
 

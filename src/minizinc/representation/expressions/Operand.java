@@ -9,8 +9,8 @@ import minizinc.representation.Parsing;
 import minizinc.representation.TypeName;
 
 /**
- * operand : ID | integer | real | string | arrayaccess | ifExpr | letExpr | '('arithExpr
- * ')' | predOrUnionExpr | qualified;
+ * operand : ID | integer | real | string | arrayaccess | ifExpr | letExpr |
+ * '('arithExpr ')' | predOrUnionExpr | qualified;
  *
  * @author rafa
  *
@@ -125,12 +125,12 @@ public class Operand extends ArithExpr {
 			op = new Operand(re);
 		} else if (Parsing.has(ctx.predOrUnionExpr()))
 			op = new Operand(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
-        else if (Parsing.has(ctx.string()))
-		     op = new Operand(StringC.stringTerm(ctx.string()));
-        else if (Parsing.has(ctx.qualified()))
-		     op = new Operand(Qualified.qualified(ctx.qualified()));
-		else 
-			Parsing.error("operand, unexpected " +  ctx.getText());
+		else if (Parsing.has(ctx.string()))
+			op = new Operand(StringC.stringTerm(ctx.string()));
+		else if (Parsing.has(ctx.qualified()))
+			op = new Operand(Qualified.qualified(ctx.qualified()));
+		else
+			Parsing.error("operand, unexpected " + ctx.getText());
 		return op;
 	}
 

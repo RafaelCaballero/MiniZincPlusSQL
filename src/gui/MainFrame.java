@@ -30,7 +30,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
 
 import org.slf4j.Logger;
@@ -84,8 +83,9 @@ public class MainFrame extends JFrame implements ViewInterface {
 	// private StyleContext sc = new StyleContext();
 	final SyntaxDocument doc = new SyntaxDocument();
 	private JTextPane textSourceCode;
-	private static int SOURCECODETAB=0;
+	private static int SOURCECODETAB = 0;
 	private JTextPane output;
+
 	/**
 	 * Constructs the main window
 	 * 
@@ -158,9 +158,10 @@ public class MainFrame extends JFrame implements ViewInterface {
 	private void createCenterPanel() {
 
 		center = new JTabbedPane();
-		//ImageIcon sqlmini = createImageIcon("/resources/sqlminimini.png", "");
-		//ImageIcon logicon = createImageIcon("/resources/log-icon.png", "");
-		//ImageIcon viewicon = createImageIcon("/resources/viewIcon.png", "");
+		// ImageIcon sqlmini = createImageIcon("/resources/sqlminimini.png",
+		// "");
+		// ImageIcon logicon = createImageIcon("/resources/log-icon.png", "");
+		// ImageIcon viewicon = createImageIcon("/resources/viewIcon.png", "");
 
 		textSourceCode = new JTextPane(this.doc);
 		JScrollPane stextView = new JScrollPane(textSourceCode);
@@ -172,7 +173,6 @@ public class MainFrame extends JFrame implements ViewInterface {
 		JScrollPane outputView = new JScrollPane(output);
 		center.addTab("Output", null, outputView, "Program output");
 
-		
 		JTextPane text = new JTextPane();
 		JScrollPane stext = new JScrollPane(text);
 		center.addTab("Log", null, stext, "Logging information");
@@ -324,9 +324,8 @@ public class MainFrame extends JFrame implements ViewInterface {
 				StyledDocument document = (StyledDocument) textSourceCode.getDocument();
 
 				for (String line : lines)
-					document.insertString(document.getLength(), line+"\n", null);
-				
-				
+					document.insertString(document.getLength(), line + "\n", null);
+
 			} catch (Exception e) {
 				System.out.println(e);
 			}

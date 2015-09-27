@@ -14,6 +14,11 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import logger.AreaAppender;
+import minizinc.representation.types.Rbool;
+import minizinc.representation.types.Rfloat;
+import minizinc.representation.types.Rint;
+import minizinc.representation.types.Type;
+import minizinc.representation.types.TypeID;
 import model.connection.ConnectionData;
 import model.relation.ColumnMeta;
 import model.relation.Database;
@@ -310,9 +315,12 @@ public class Query {
 			ncolumns = metar.getColumnCount();
 			result = new ColumnMeta[ncolumns];
 			for (int i = 1; i <= ncolumns; i++) {
+
 				int typeC = metar.getColumnType(i);
+				Type type = Query.convertType(typeC);
+
 				String nameC = metar.getColumnName(i);
-				result[i - 1] = new ColumnMeta(typeC, nameC);
+				result[i - 1] = new ColumnMeta(type, nameC);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -321,6 +329,147 @@ public class Query {
 		}
 
 		return result;
+	}
+
+	private static Type convertType(int typeC) {
+		Type type = null;
+		switch (typeC) {
+		case java.sql.Types.ARRAY:
+			type = new TypeID("array");
+			break;
+		case java.sql.Types.BIGINT:
+			type = new Rint();
+			break;
+
+		case java.sql.Types.BINARY:
+			type = new Rint();
+			break;
+		case java.sql.Types.BIT:
+			type = new Rint();
+			break;
+		case java.sql.Types.BLOB:
+			type = new TypeID("blob");
+			break;
+		case java.sql.Types.BOOLEAN:
+			type = new Rbool();
+			break;
+		case java.sql.Types.CHAR:
+			type = new TypeID("char");
+			break;
+		case java.sql.Types.CLOB:
+			type = new TypeID("clob");
+		case java.sql.Types.DATALINK:
+			type = new TypeID("datalink");
+			break;
+		case java.sql.Types.DATE:
+			type = new TypeID("date");
+			break;
+		case java.sql.Types.DECIMAL:
+			type = new Rfloat();
+			break;
+		case java.sql.Types.DISTINCT:
+			type = new TypeID("distinct");
+			break;
+		case java.sql.Types.DOUBLE:
+			type = new Rfloat();
+			break;
+		case java.sql.Types.FLOAT:
+			type = new Rfloat();
+			break;
+		case java.sql.Types.INTEGER:
+			type = new Rint();
+			break;
+		case java.sql.Types.JAVA_OBJECT:
+			type = new TypeID("Java_Object");
+			break;
+		case java.sql.Types.LONGNVARCHAR:
+			type = new TypeID("longnvarchar");
+			break;
+		case java.sql.Types.LONGVARBINARY:
+			type = new TypeID("longvarbinary");
+			break;
+		case java.sql.Types.LONGVARCHAR:
+			type = new TypeID("longvarchar");
+			break;
+		case java.sql.Types.NCHAR:
+			type = new TypeID("nchar");
+			break;
+		case java.sql.Types.NCLOB:
+			type = new TypeID("nclob");
+			break;
+		case java.sql.Types.NULL:
+			type = new TypeID("null");
+			break;
+		case java.sql.Types.NUMERIC:
+			type = new Rint();
+			break;
+		case java.sql.Types.NVARCHAR:
+			type = new TypeID("nvarchar");
+			break;
+		case java.sql.Types.OTHER:
+			type = new TypeID("other");
+			break;
+		case java.sql.Types.REAL:
+			type = new Rfloat();
+			break;
+		case java.sql.Types.REF:
+			type = new TypeID("ref");
+			break;
+		case java.sql.Types.REF_CURSOR:
+			type = new TypeID("ref_cursor");
+			break;
+		case java.sql.Types.ROWID:
+			type = new Rint();
+			break;
+		case java.sql.Types.SMALLINT:
+			type = new Rint();
+			break;
+		case java.sql.Types.SQLXML:
+			type = new TypeID("sqlxml");
+			break;
+		case java.sql.Types.STRUCT:
+			type = new TypeID("struct");
+			break;
+		case java.sql.Types.TIME:
+			type = new TypeID("time");
+			break;
+		case java.sql.Types.TIME_WITH_TIMEZONE:
+			type = new TypeID("time_with_timezone");
+			break;
+		case java.sql.Types.TIMESTAMP:
+			type = new TypeID("timestamp");
+			break;
+		case java.sql.Types.TINYINT:
+			type = new Rint();
+			break;
+		case java.sql.Types.VARBINARY:
+			type = new TypeID("varbinary");
+			break;
+		case java.sql.Types.VARCHAR:
+			type = new TypeID("varchar");
+			break;
+		default:
+			logger.error("Unexpected column type, id: {}", typeC);
+			break;
+		}
+
+		return type;
+
+	}
+
+	/**
+	 * Produces a list of types
+	 * 
+	 * @param sqlName
+	 * @return
+	 * @throws SQLException
+	 */
+	public static ColumnMeta[] getColumns(Connection conn, String sqlName) throws SQLException {
+		Statement stAllr = conn.createStatement();
+		ResultSet rsAllr = stAllr.executeQuery("select * from " + sqlName);
+		ResultSetMetaData metar = rsAllr.getMetaData();
+		ColumnMeta[] r = Query.getColumnMetas(metar);
+		return r;
 	}
 
 }

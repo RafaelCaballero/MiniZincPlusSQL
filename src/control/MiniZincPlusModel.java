@@ -18,8 +18,8 @@ import logger.AreaAppender;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
 
 /**
- * Represents a MiniZinc model include SQL tables, dot notation and 
- * constraints
+ * Represents a MiniZinc model include SQL tables, dot notation and constraints
+ * 
  * @author rafa
  *
  */

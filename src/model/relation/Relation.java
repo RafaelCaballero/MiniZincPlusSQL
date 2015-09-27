@@ -1,9 +1,6 @@
 package model.relation;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
 
 //import org.slf4j.Logger;
 

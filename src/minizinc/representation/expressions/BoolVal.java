@@ -10,8 +10,8 @@ import minizinc.representation.Parsing;
 /**
  * Atomic bool value. It is an abstract class that combines the union given by
  * the following grammar:<br>
- * boolVal : | '(' boolExpr ')' | ID | BOOL | arrayaccess | ifExpr | letExpr | qualified
- * predOrUnionExpr | guardExpr ;
+ * boolVal : | '(' boolExpr ')' | ID | BOOL | arrayaccess | ifExpr | letExpr |
+ * qualified predOrUnionExpr | guardExpr ;
  * 
  * @author rafa
  *
@@ -139,8 +139,8 @@ public class BoolVal extends BoolExpr {
 			PredOrUnionExpr ep = (e == null ? null : ((PredOrUnionExpr) e).clone());
 			r = new BoolVal(ep);
 		}
-		
-        return r;
+
+		return r;
 	}
 
 	@Override
