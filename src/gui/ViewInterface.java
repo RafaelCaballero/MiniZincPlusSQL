@@ -3,6 +3,7 @@ package gui;
 import conf.AppConf;
 import control.Control;
 import gui.statusbar.StatusBarMessage;
+import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.connection.ConnectionData;
 import model.relation.Database;
 
@@ -65,5 +66,11 @@ public interface ViewInterface {
 	 * @return The application configuration modified after the login process
 	 */
 	AppConf getLoginConf();
+
+	/**
+	 * Shows the result after the preprocessing
+	 * @param mp
+	 */
+	public void displayPreprocess(MiniZincSQLModel mp);
 
 }

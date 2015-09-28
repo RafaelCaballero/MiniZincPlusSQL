@@ -40,6 +40,7 @@ import gui.statusbar.StatusBar;
 import gui.statusbar.StatusBarMessage;
 import logger.AreaAppender;
 import logger.TextFactory;
+import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.connection.ConnectionData;
 import model.relation.Database;
 
@@ -83,6 +84,7 @@ public class MainFrame extends JFrame implements ViewInterface {
 	// private StyleContext sc = new StyleContext();
 	final SyntaxDocument doc = new SyntaxDocument();
 	private JTextPane textSourceCode;
+	private JTextPane preprocessSourceCode;
 	private static int SOURCECODETAB = 0;
 	private JTextPane output;
 
@@ -168,6 +170,10 @@ public class MainFrame extends JFrame implements ViewInterface {
 		center.addTab("Source", null, stextView, "MiniZinc+SQL source");
 		SOURCECODETAB = 1;
 		// center.setEnabledAt(0, false);
+
+		preprocessSourceCode = new JTextPane(this.doc);
+		JScrollPane preprocessTextView = new JScrollPane(preprocessSourceCode);
+		center.addTab("Preprocess", null, preprocessTextView, "MiniZinc+SQL after preprocessing");
 
 		this.output = new JTextPane();
 		JScrollPane outputView = new JScrollPane(output);
@@ -344,6 +350,26 @@ public class MainFrame extends JFrame implements ViewInterface {
 
 		return result;
 
+	}
+
+	@Override
+	public void displayPreprocess(MiniZincSQLModel mp) {
+		
+		preprocessSourceCode.setText("% MiniZinc+SQL preprocessed\n");
+		try {
+			StyledDocument document = (StyledDocument) preprocessSourceCode.getDocument();
+			
+
+			String pre = mp.print();
+			document.insertString(document.getLength(), pre + "\n", null);
+
+		} catch (Exception e) {
+			System.out.println(e);
+			logger.error("Error displaying preprocessed code! {}",e.getMessage());
+		}
+
+	center.updateUI();
+		
 	}
 
 }

@@ -15,6 +15,7 @@ import logger.AreaAppender;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
 import model.Model;
 import model.connection.ConnectionData;
+import transformation.EliminateTupleVariables;
 import conf.AppConf;
 
 public class Control implements ActionListener, MouseListener {
@@ -122,9 +123,10 @@ public class Control implements ActionListener, MouseListener {
 				try {
 					logger.info("Parsing {}", fileName);
 					MiniZincSQLModel mp = mod.process(fileName);
-					logger.info("End of parsing\n, Source Model:\n {}", mp);
-					logger.info("\nSolving...");
-					mod.solver(mp, 0, 0);
+					logger.info("End of parsing");
+					logger.info("Preprocessing...");
+					solve(mp);
+					logger.info("End of transformation\n");
 
 				} catch (Exception e) {
 					view.displayError("Error processing file  ", e);
@@ -139,6 +141,18 @@ public class Control implements ActionListener, MouseListener {
 			}
 		}
 
+	}
+
+	private void solve(MiniZincSQLModel mp) {
+		EliminateTupleVariables etv = mod.preProcess(mp);
+		if (etv.aborted())
+			view.displayError("Error in preprocessing. Set log for details", null);
+		else {
+			view.displayPreprocess(mp);
+			
+		}
+
+		
 	}
 
 }

@@ -153,5 +153,11 @@ public class TypeArray extends Type {
 		// TODO. Zero of an array?
 		return null;
 	}
+	
+
+	public List<Type> getDimensions() {
+		
+		return dimensions;
+	}
 
 }
