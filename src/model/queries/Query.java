@@ -14,6 +14,9 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import logger.AreaAppender;
+import minizinc.representation.expressions.FloatC;
+import minizinc.representation.expressions.IntC;
+import minizinc.representation.expressions.Operand;
 import minizinc.representation.types.Rbool;
 import minizinc.representation.types.Rfloat;
 import minizinc.representation.types.Rint;
@@ -470,6 +473,40 @@ public class Query {
 		ResultSetMetaData metar = rsAllr.getMetaData();
 		ColumnMeta[] r = Query.getColumnMetas(metar);
 		return r;
+	}
+
+	public static RelationMinAndMax getMinAndMaxFloat(Connection conn,String table, String colName) throws SQLException {
+		RelationMinAndMax result=new RelationMinAndMax();
+		conn.setAutoCommit(false);
+		Statement st;
+
+		st = conn.createStatement();
+		// Turn use of the cursor on.
+		st.setFetchSize(50);
+		ResultSet rs = st.executeQuery("select min("+colName+"), max("+colName+") from "+table);
+		if (rs.next()) {
+		 result.min = new Operand(new FloatC(rs.getDouble(1)));
+		 result.max = new Operand(new FloatC(rs.getDouble(2)));
+		}
+		return result;
+		
+	}
+
+	public static RelationMinAndMax getMinAndMaxInteger(Connection conn,String table, String colName) throws SQLException {
+		RelationMinAndMax result=new RelationMinAndMax();
+		conn.setAutoCommit(false);
+		Statement st;
+
+		st = conn.createStatement();
+		// Turn use of the cursor on.
+		st.setFetchSize(50);
+		ResultSet rs = st.executeQuery("select min("+colName+"), max("+colName+") from "+table);
+		if (rs.next()) {
+		 result.min = new Operand(new IntC(rs.getInt(1)));
+		 result.max = new Operand(new IntC(rs.getInt(2)));
+		}
+		
+		return result;
 	}
 
 }

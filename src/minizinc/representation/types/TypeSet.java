@@ -25,6 +25,10 @@ public class TypeSet extends Type {
 		return elem;
 	}
 
+	public void setElem(Type newElem) {
+		elem = newElem;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

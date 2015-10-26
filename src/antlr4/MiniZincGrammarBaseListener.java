@@ -1,2235 +1,1227 @@
-package antlr4;
 // Generated from MiniZincGrammar.g4 by ANTLR 4.5.1
+package antlr4;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of
- * {@link MiniZincGrammarListener}, which can be extended to create a listener
- * which only needs to handle a subset of the available methods.
+ * This class provides an empty implementation of {@link MiniZincGrammarListener},
+ * which can be extended to create a listener which only needs to handle a subset
+ * of the available methods.
  */
 public class MiniZincGrammarBaseListener implements MiniZincGrammarListener {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
-	@Override
-	public void enterModel(MiniZincGrammarParser.ModelContext ctx) {
-	}
-
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterModel(MiniZincGrammarParser.ModelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitModel(MiniZincGrammarParser.ModelContext ctx) {
-	}
-
+	@Override public void exitModel(MiniZincGrammarParser.ModelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterStat(MiniZincGrammarParser.StatContext ctx) {
-	}
-
+	@Override public void enterStat(MiniZincGrammarParser.StatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitStat(MiniZincGrammarParser.StatContext ctx) {
-	}
-
+	@Override public void exitStat(MiniZincGrammarParser.StatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterDecl(MiniZincGrammarParser.DeclContext ctx) {
-	}
-
+	@Override public void enterDecl(MiniZincGrammarParser.DeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitDecl(MiniZincGrammarParser.DeclContext ctx) {
-	}
-
+	@Override public void exitDecl(MiniZincGrammarParser.DeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterVardecl(MiniZincGrammarParser.VardeclContext ctx) {
-	}
-
+	@Override public void enterVardecl(MiniZincGrammarParser.VardeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitVardecl(MiniZincGrammarParser.VardeclContext ctx) {
-	}
-
+	@Override public void exitVardecl(MiniZincGrammarParser.VardeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterPardecl(MiniZincGrammarParser.PardeclContext ctx) {
-	}
-
+	@Override public void enterPardecl(MiniZincGrammarParser.PardeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
-	@Override
-	public void exitPardecl(MiniZincGrammarParser.PardeclContext ctx) {
-	}
-
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPardecl(MiniZincGrammarParser.PardeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterTable(MiniZincGrammarParser.TableContext ctx) {
-	}
-
+	@Override public void enterTable(MiniZincGrammarParser.TableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitTable(MiniZincGrammarParser.TableContext ctx) {
-	}
-
+	@Override public void exitTable(MiniZincGrammarParser.TableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterConstraint(MiniZincGrammarParser.ConstraintContext ctx) {
-	}
-
+	@Override public void enterConstraint(MiniZincGrammarParser.ConstraintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitConstraint(MiniZincGrammarParser.ConstraintContext ctx) {
-	}
-
+	@Override public void exitConstraint(MiniZincGrammarParser.ConstraintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterVar(MiniZincGrammarParser.VarContext ctx) {
-	}
-
+	@Override public void enterVar(MiniZincGrammarParser.VarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitVar(MiniZincGrammarParser.VarContext ctx) {
-	}
-
+	@Override public void exitVar(MiniZincGrammarParser.VarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOutput(MiniZincGrammarParser.OutputContext ctx) {
-	}
-
+	@Override public void enterOutput(MiniZincGrammarParser.OutputContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOutput(MiniZincGrammarParser.OutputContext ctx) {
-	}
-
+	@Override public void exitOutput(MiniZincGrammarParser.OutputContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSolve(MiniZincGrammarParser.SolveContext ctx) {
-	}
-
+	@Override public void enterSolve(MiniZincGrammarParser.SolveContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSolve(MiniZincGrammarParser.SolveContext ctx) {
-	}
-
+	@Override public void exitSolve(MiniZincGrammarParser.SolveContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterParameter(MiniZincGrammarParser.ParameterContext ctx) {
-	}
-
+	@Override public void enterParameter(MiniZincGrammarParser.ParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitParameter(MiniZincGrammarParser.ParameterContext ctx) {
-	}
-
+	@Override public void exitParameter(MiniZincGrammarParser.ParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterInclude(MiniZincGrammarParser.IncludeContext ctx) {
-	}
-
+	@Override public void enterInclude(MiniZincGrammarParser.IncludeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitInclude(MiniZincGrammarParser.IncludeContext ctx) {
-	}
-
+	@Override public void exitInclude(MiniZincGrammarParser.IncludeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterInit(MiniZincGrammarParser.InitContext ctx) {
-	}
-
+	@Override public void enterInit(MiniZincGrammarParser.InitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitInit(MiniZincGrammarParser.InitContext ctx) {
-	}
-
+	@Override public void exitInit(MiniZincGrammarParser.InitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterPredicate(MiniZincGrammarParser.PredicateContext ctx) {
-	}
-
+	@Override public void enterPredicate(MiniZincGrammarParser.PredicateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitPredicate(MiniZincGrammarParser.PredicateContext ctx) {
-	}
-
+	@Override public void exitPredicate(MiniZincGrammarParser.PredicateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterFunction(MiniZincGrammarParser.FunctionContext ctx) {
-	}
-
+	@Override public void enterFunction(MiniZincGrammarParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitFunction(MiniZincGrammarParser.FunctionContext ctx) {
-	}
-
+	@Override public void exitFunction(MiniZincGrammarParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterQualName(MiniZincGrammarParser.QualNameContext ctx) {
-	}
-
+	@Override public void enterQualName(MiniZincGrammarParser.QualNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitQualName(MiniZincGrammarParser.QualNameContext ctx) {
-	}
-
+	@Override public void exitQualName(MiniZincGrammarParser.QualNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterVarmark(MiniZincGrammarParser.VarmarkContext ctx) {
-	}
-
+	@Override public void enterVarmark(MiniZincGrammarParser.VarmarkContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitVarmark(MiniZincGrammarParser.VarmarkContext ctx) {
-	}
-
+	@Override public void exitVarmark(MiniZincGrammarParser.VarmarkContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterExtendsmark(MiniZincGrammarParser.ExtendsmarkContext ctx) {
-	}
-
+	@Override public void enterExtendsmark(MiniZincGrammarParser.ExtendsmarkContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitExtendsmark(MiniZincGrammarParser.ExtendsmarkContext ctx) {
-	}
-
+	@Override public void exitExtendsmark(MiniZincGrammarParser.ExtendsmarkContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOpOrID(MiniZincGrammarParser.OpOrIDContext ctx) {
-	}
-
+	@Override public void enterOpOrID(MiniZincGrammarParser.OpOrIDContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOpOrID(MiniZincGrammarParser.OpOrIDContext ctx) {
-	}
-
+	@Override public void exitOpOrID(MiniZincGrammarParser.OpOrIDContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSatisfy(MiniZincGrammarParser.SatisfyContext ctx) {
-	}
-
+	@Override public void enterSatisfy(MiniZincGrammarParser.SatisfyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSatisfy(MiniZincGrammarParser.SatisfyContext ctx) {
-	}
-
+	@Override public void exitSatisfy(MiniZincGrammarParser.SatisfyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOptimize(MiniZincGrammarParser.OptimizeContext ctx) {
-	}
-
+	@Override public void enterOptimize(MiniZincGrammarParser.OptimizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOptimize(MiniZincGrammarParser.OptimizeContext ctx) {
-	}
-
+	@Override public void exitOptimize(MiniZincGrammarParser.OptimizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterMaximize(MiniZincGrammarParser.MaximizeContext ctx) {
-	}
-
+	@Override public void enterMaximize(MiniZincGrammarParser.MaximizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitMaximize(MiniZincGrammarParser.MaximizeContext ctx) {
-	}
-
+	@Override public void exitMaximize(MiniZincGrammarParser.MaximizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterMinimize(MiniZincGrammarParser.MinimizeContext ctx) {
-	}
-
+	@Override public void enterMinimize(MiniZincGrammarParser.MinimizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitMinimize(MiniZincGrammarParser.MinimizeContext ctx) {
-	}
-
+	@Override public void exitMinimize(MiniZincGrammarParser.MinimizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterAnnotation(MiniZincGrammarParser.AnnotationContext ctx) {
-	}
-
+	@Override public void enterAnnotation(MiniZincGrammarParser.AnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitAnnotation(MiniZincGrammarParser.AnnotationContext ctx) {
-	}
-
+	@Override public void exitAnnotation(MiniZincGrammarParser.AnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterModeAnnotation(MiniZincGrammarParser.ModeAnnotationContext ctx) {
-	}
-
+	@Override public void enterModeAnnotation(MiniZincGrammarParser.ModeAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitModeAnnotation(MiniZincGrammarParser.ModeAnnotationContext ctx) {
-	}
-
+	@Override public void exitModeAnnotation(MiniZincGrammarParser.ModeAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterIntS(MiniZincGrammarParser.IntSContext ctx) {
-	}
-
+	@Override public void enterIntS(MiniZincGrammarParser.IntSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitIntS(MiniZincGrammarParser.IntSContext ctx) {
-	}
-
+	@Override public void exitIntS(MiniZincGrammarParser.IntSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBoolS(MiniZincGrammarParser.BoolSContext ctx) {
-	}
-
+	@Override public void enterBoolS(MiniZincGrammarParser.BoolSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBoolS(MiniZincGrammarParser.BoolSContext ctx) {
-	}
-
+	@Override public void exitBoolS(MiniZincGrammarParser.BoolSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSetS(MiniZincGrammarParser.SetSContext ctx) {
-	}
-
+	@Override public void enterSetS(MiniZincGrammarParser.SetSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSetS(MiniZincGrammarParser.SetSContext ctx) {
-	}
-
+	@Override public void exitSetS(MiniZincGrammarParser.SetSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSeqS(MiniZincGrammarParser.SeqSContext ctx) {
-	}
-
+	@Override public void enterSeqS(MiniZincGrammarParser.SeqSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSeqS(MiniZincGrammarParser.SeqSContext ctx) {
-	}
-
+	@Override public void exitSeqS(MiniZincGrammarParser.SeqSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterRestS(MiniZincGrammarParser.RestSContext ctx) {
-	}
-
+	@Override public void enterRestS(MiniZincGrammarParser.RestSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitRestS(MiniZincGrammarParser.RestSContext ctx) {
-	}
-
+	@Override public void exitRestS(MiniZincGrammarParser.RestSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterVarchoice(MiniZincGrammarParser.VarchoiceContext ctx) {
-	}
-
+	@Override public void enterVarchoice(MiniZincGrammarParser.VarchoiceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitVarchoice(MiniZincGrammarParser.VarchoiceContext ctx) {
-	}
-
+	@Override public void exitVarchoice(MiniZincGrammarParser.VarchoiceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterConstrainchoice(MiniZincGrammarParser.ConstrainchoiceContext ctx) {
-	}
-
+	@Override public void enterConstrainchoice(MiniZincGrammarParser.ConstrainchoiceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitConstrainchoice(MiniZincGrammarParser.ConstrainchoiceContext ctx) {
-	}
-
+	@Override public void exitConstrainchoice(MiniZincGrammarParser.ConstrainchoiceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterConstr(MiniZincGrammarParser.ConstrContext ctx) {
-	}
-
+	@Override public void enterConstr(MiniZincGrammarParser.ConstrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitConstr(MiniZincGrammarParser.ConstrContext ctx) {
-	}
-
+	@Override public void exitConstr(MiniZincGrammarParser.ConstrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterScons(MiniZincGrammarParser.SconsContext ctx) {
-	}
-
+	@Override public void enterScons(MiniZincGrammarParser.SconsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitScons(MiniZincGrammarParser.SconsContext ctx) {
-	}
-
+	@Override public void exitScons(MiniZincGrammarParser.SconsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterTcons(MiniZincGrammarParser.TconsContext ctx) {
-	}
-
+	@Override public void enterTcons(MiniZincGrammarParser.TconsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitTcons(MiniZincGrammarParser.TconsContext ctx) {
-	}
-
+	@Override public void exitTcons(MiniZincGrammarParser.TconsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterTypename(MiniZincGrammarParser.TypenameContext ctx) {
-	}
-
+	@Override public void enterTypename(MiniZincGrammarParser.TypenameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitTypename(MiniZincGrammarParser.TypenameContext ctx) {
-	}
-
+	@Override public void exitTypename(MiniZincGrammarParser.TypenameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterTypeset(MiniZincGrammarParser.TypesetContext ctx) {
-	}
-
+	@Override public void enterTypeset(MiniZincGrammarParser.TypesetContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitTypeset(MiniZincGrammarParser.TypesetContext ctx) {
-	}
-
+	@Override public void exitTypeset(MiniZincGrammarParser.TypesetContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterVararray(MiniZincGrammarParser.VararrayContext ctx) {
-	}
-
+	@Override public void enterVararray(MiniZincGrammarParser.VararrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitVararray(MiniZincGrammarParser.VararrayContext ctx) {
-	}
-
+	@Override public void exitVararray(MiniZincGrammarParser.VararrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterPararray(MiniZincGrammarParser.PararrayContext ctx) {
-	}
-
+	@Override public void enterPararray(MiniZincGrammarParser.PararrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitPararray(MiniZincGrammarParser.PararrayContext ctx) {
-	}
-
+	@Override public void exitPararray(MiniZincGrammarParser.PararrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterDimensions(MiniZincGrammarParser.DimensionsContext ctx) {
-	}
-
+	@Override public void enterDimensions(MiniZincGrammarParser.DimensionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitDimensions(MiniZincGrammarParser.DimensionsContext ctx) {
-	}
-
+	@Override public void exitDimensions(MiniZincGrammarParser.DimensionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterTypedata(MiniZincGrammarParser.TypedataContext ctx) {
-	}
-
+	@Override public void enterTypedata(MiniZincGrammarParser.TypedataContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitTypedata(MiniZincGrammarParser.TypedataContext ctx) {
-	}
-
+	@Override public void exitTypedata(MiniZincGrammarParser.TypedataContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterExpr(MiniZincGrammarParser.ExprContext ctx) {
-	}
-
+	@Override public void enterExpr(MiniZincGrammarParser.ExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitExpr(MiniZincGrammarParser.ExprContext ctx) {
-	}
-
+	@Override public void exitExpr(MiniZincGrammarParser.ExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBoolVal(MiniZincGrammarParser.BoolValContext ctx) {
-	}
-
+	@Override public void enterBoolVal(MiniZincGrammarParser.BoolValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBoolVal(MiniZincGrammarParser.BoolValContext ctx) {
-	}
-
+	@Override public void exitBoolVal(MiniZincGrammarParser.BoolValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOp(MiniZincGrammarParser.OpContext ctx) {
-	}
-
+	@Override public void enterOp(MiniZincGrammarParser.OpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOp(MiniZincGrammarParser.OpContext ctx) {
-	}
-
+	@Override public void exitOp(MiniZincGrammarParser.OpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBoolOp(MiniZincGrammarParser.BoolOpContext ctx) {
-	}
-
+	@Override public void enterBoolOp(MiniZincGrammarParser.BoolOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBoolOp(MiniZincGrammarParser.BoolOpContext ctx) {
-	}
-
+	@Override public void exitBoolOp(MiniZincGrammarParser.BoolOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterArithOp(MiniZincGrammarParser.ArithOpContext ctx) {
-	}
-
+	@Override public void enterArithOp(MiniZincGrammarParser.ArithOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitArithOp(MiniZincGrammarParser.ArithOpContext ctx) {
-	}
-
+	@Override public void exitArithOp(MiniZincGrammarParser.ArithOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterArithOp2(MiniZincGrammarParser.ArithOp2Context ctx) {
-	}
-
+	@Override public void enterArithOp2(MiniZincGrammarParser.ArithOp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitArithOp2(MiniZincGrammarParser.ArithOp2Context ctx) {
-	}
-
+	@Override public void exitArithOp2(MiniZincGrammarParser.ArithOp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterQualBoolOp(MiniZincGrammarParser.QualBoolOpContext ctx) {
-	}
-
+	@Override public void enterQualBoolOp(MiniZincGrammarParser.QualBoolOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitQualBoolOp(MiniZincGrammarParser.QualBoolOpContext ctx) {
-	}
-
+	@Override public void exitQualBoolOp(MiniZincGrammarParser.QualBoolOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterQualArithOp(MiniZincGrammarParser.QualArithOpContext ctx) {
-	}
-
+	@Override public void enterQualArithOp(MiniZincGrammarParser.QualArithOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitQualArithOp(MiniZincGrammarParser.QualArithOpContext ctx) {
-	}
-
+	@Override public void exitQualArithOp(MiniZincGrammarParser.QualArithOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBoolComplexExpr(MiniZincGrammarParser.BoolComplexExprContext ctx) {
-	}
-
+	@Override public void enterBoolComplexExpr(MiniZincGrammarParser.BoolComplexExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBoolComplexExpr(MiniZincGrammarParser.BoolComplexExprContext ctx) {
-	}
-
+	@Override public void exitBoolComplexExpr(MiniZincGrammarParser.BoolComplexExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBoolExpr(MiniZincGrammarParser.BoolExprContext ctx) {
-	}
-
+	@Override public void enterBoolExpr(MiniZincGrammarParser.BoolExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBoolExpr(MiniZincGrammarParser.BoolExprContext ctx) {
-	}
-
+	@Override public void exitBoolExpr(MiniZincGrammarParser.BoolExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOperand(MiniZincGrammarParser.OperandContext ctx) {
-	}
-
+	@Override public void enterOperand(MiniZincGrammarParser.OperandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOperand(MiniZincGrammarParser.OperandContext ctx) {
-	}
-
+	@Override public void exitOperand(MiniZincGrammarParser.OperandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterQualified(MiniZincGrammarParser.QualifiedContext ctx) {
-	}
-
+	@Override public void enterQualified(MiniZincGrammarParser.QualifiedContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitQualified(MiniZincGrammarParser.QualifiedContext ctx) {
-	}
-
+	@Override public void exitQualified(MiniZincGrammarParser.QualifiedContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterArithComplexExpr(MiniZincGrammarParser.ArithComplexExprContext ctx) {
-	}
-
+	@Override public void enterArithComplexExpr(MiniZincGrammarParser.ArithComplexExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitArithComplexExpr(MiniZincGrammarParser.ArithComplexExprContext ctx) {
-	}
-
+	@Override public void exitArithComplexExpr(MiniZincGrammarParser.ArithComplexExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterArithExpr(MiniZincGrammarParser.ArithExprContext ctx) {
-	}
-
+	@Override public void enterArithExpr(MiniZincGrammarParser.ArithExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitArithExpr(MiniZincGrammarParser.ArithExprContext ctx) {
-	}
-
+	@Override public void exitArithExpr(MiniZincGrammarParser.ArithExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterNotExpr(MiniZincGrammarParser.NotExprContext ctx) {
-	}
-
+	@Override public void enterNotExpr(MiniZincGrammarParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitNotExpr(MiniZincGrammarParser.NotExprContext ctx) {
-	}
-
+	@Override public void exitNotExpr(MiniZincGrammarParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterMinusExpr(MiniZincGrammarParser.MinusExprContext ctx) {
-	}
-
+	@Override public void enterMinusExpr(MiniZincGrammarParser.MinusExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitMinusExpr(MiniZincGrammarParser.MinusExprContext ctx) {
-	}
-
+	@Override public void exitMinusExpr(MiniZincGrammarParser.MinusExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterPredOrUnionExpr(MiniZincGrammarParser.PredOrUnionExprContext ctx) {
-	}
-
+	@Override public void enterPredOrUnionExpr(MiniZincGrammarParser.PredOrUnionExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitPredOrUnionExpr(MiniZincGrammarParser.PredOrUnionExprContext ctx) {
-	}
-
+	@Override public void exitPredOrUnionExpr(MiniZincGrammarParser.PredOrUnionExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOnesection(MiniZincGrammarParser.OnesectionContext ctx) {
-	}
-
+	@Override public void enterOnesection(MiniZincGrammarParser.OnesectionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOnesection(MiniZincGrammarParser.OnesectionContext ctx) {
-	}
-
+	@Override public void exitOnesection(MiniZincGrammarParser.OnesectionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterTwosections(MiniZincGrammarParser.TwosectionsContext ctx) {
-	}
-
+	@Override public void enterTwosections(MiniZincGrammarParser.TwosectionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitTwosections(MiniZincGrammarParser.TwosectionsContext ctx) {
-	}
-
+	@Override public void exitTwosections(MiniZincGrammarParser.TwosectionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterRbracketExpr(MiniZincGrammarParser.RbracketExprContext ctx) {
-	}
-
+	@Override public void enterRbracketExpr(MiniZincGrammarParser.RbracketExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitRbracketExpr(MiniZincGrammarParser.RbracketExprContext ctx) {
-	}
-
+	@Override public void exitRbracketExpr(MiniZincGrammarParser.RbracketExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterIdexpr(MiniZincGrammarParser.IdexprContext ctx) {
-	}
-
+	@Override public void enterIdexpr(MiniZincGrammarParser.IdexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitIdexpr(MiniZincGrammarParser.IdexprContext ctx) {
-	}
-
+	@Override public void exitIdexpr(MiniZincGrammarParser.IdexprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterStringExpr(MiniZincGrammarParser.StringExprContext ctx) {
-	}
-
+	@Override public void enterStringExpr(MiniZincGrammarParser.StringExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitStringExpr(MiniZincGrammarParser.StringExprContext ctx) {
-	}
-
+	@Override public void exitStringExpr(MiniZincGrammarParser.StringExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterInfixOp(MiniZincGrammarParser.InfixOpContext ctx) {
-	}
-
+	@Override public void enterInfixOp(MiniZincGrammarParser.InfixOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitInfixOp(MiniZincGrammarParser.InfixOpContext ctx) {
-	}
-
+	@Override public void exitInfixOp(MiniZincGrammarParser.InfixOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterInfixSetOp(MiniZincGrammarParser.InfixSetOpContext ctx) {
-	}
-
+	@Override public void enterInfixSetOp(MiniZincGrammarParser.InfixSetOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitInfixSetOp(MiniZincGrammarParser.InfixSetOpContext ctx) {
-	}
-
+	@Override public void exitInfixSetOp(MiniZincGrammarParser.InfixSetOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterArrayaccess(MiniZincGrammarParser.ArrayaccessContext ctx) {
-	}
-
+	@Override public void enterArrayaccess(MiniZincGrammarParser.ArrayaccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitArrayaccess(MiniZincGrammarParser.ArrayaccessContext ctx) {
-	}
-
+	@Override public void exitArrayaccess(MiniZincGrammarParser.ArrayaccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterCaseExpr(MiniZincGrammarParser.CaseExprContext ctx) {
-	}
-
+	@Override public void enterCaseExpr(MiniZincGrammarParser.CaseExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitCaseExpr(MiniZincGrammarParser.CaseExprContext ctx) {
-	}
-
+	@Override public void exitCaseExpr(MiniZincGrammarParser.CaseExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterCaseBranch(MiniZincGrammarParser.CaseBranchContext ctx) {
-	}
-
+	@Override public void enterCaseBranch(MiniZincGrammarParser.CaseBranchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitCaseBranch(MiniZincGrammarParser.CaseBranchContext ctx) {
-	}
-
+	@Override public void exitCaseBranch(MiniZincGrammarParser.CaseBranchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterListExpr(MiniZincGrammarParser.ListExprContext ctx) {
-	}
-
+	@Override public void enterListExpr(MiniZincGrammarParser.ListExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitListExpr(MiniZincGrammarParser.ListExprContext ctx) {
-	}
-
+	@Override public void exitListExpr(MiniZincGrammarParser.ListExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterOneDimList(MiniZincGrammarParser.OneDimListContext ctx) {
-	}
-
+	@Override public void enterOneDimList(MiniZincGrammarParser.OneDimListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitOneDimList(MiniZincGrammarParser.OneDimListContext ctx) {
-	}
-
+	@Override public void exitOneDimList(MiniZincGrammarParser.OneDimListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSimpleList(MiniZincGrammarParser.SimpleListContext ctx) {
-	}
-
+	@Override public void enterSimpleList(MiniZincGrammarParser.SimpleListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSimpleList(MiniZincGrammarParser.SimpleListContext ctx) {
-	}
-
+	@Override public void exitSimpleList(MiniZincGrammarParser.SimpleListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSimpleNonEmptyList(MiniZincGrammarParser.SimpleNonEmptyListContext ctx) {
-	}
-
+	@Override public void enterSimpleNonEmptyList(MiniZincGrammarParser.SimpleNonEmptyListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSimpleNonEmptyList(MiniZincGrammarParser.SimpleNonEmptyListContext ctx) {
-	}
-
+	@Override public void exitSimpleNonEmptyList(MiniZincGrammarParser.SimpleNonEmptyListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterGuardedList(MiniZincGrammarParser.GuardedListContext ctx) {
-	}
-
+	@Override public void enterGuardedList(MiniZincGrammarParser.GuardedListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitGuardedList(MiniZincGrammarParser.GuardedListContext ctx) {
-	}
-
+	@Override public void exitGuardedList(MiniZincGrammarParser.GuardedListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterMultiDimList(MiniZincGrammarParser.MultiDimListContext ctx) {
-	}
-
+	@Override public void enterMultiDimList(MiniZincGrammarParser.MultiDimListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitMultiDimList(MiniZincGrammarParser.MultiDimListContext ctx) {
-	}
-
+	@Override public void exitMultiDimList(MiniZincGrammarParser.MultiDimListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterNonEmptyListElems(MiniZincGrammarParser.NonEmptyListElemsContext ctx) {
-	}
-
+	@Override public void enterNonEmptyListElems(MiniZincGrammarParser.NonEmptyListElemsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitNonEmptyListElems(MiniZincGrammarParser.NonEmptyListElemsContext ctx) {
-	}
-
+	@Override public void exitNonEmptyListElems(MiniZincGrammarParser.NonEmptyListElemsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterListValue(MiniZincGrammarParser.ListValueContext ctx) {
-	}
-
+	@Override public void enterListValue(MiniZincGrammarParser.ListValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitListValue(MiniZincGrammarParser.ListValueContext ctx) {
-	}
-
+	@Override public void exitListValue(MiniZincGrammarParser.ListValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterInDecl(MiniZincGrammarParser.InDeclContext ctx) {
-	}
-
+	@Override public void enterInDecl(MiniZincGrammarParser.InDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitInDecl(MiniZincGrammarParser.InDeclContext ctx) {
-	}
-
+	@Override public void exitInDecl(MiniZincGrammarParser.InDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterWhereCond(MiniZincGrammarParser.WhereCondContext ctx) {
-	}
-
+	@Override public void enterWhereCond(MiniZincGrammarParser.WhereCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitWhereCond(MiniZincGrammarParser.WhereCondContext ctx) {
-	}
-
+	@Override public void exitWhereCond(MiniZincGrammarParser.WhereCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterLetExpr(MiniZincGrammarParser.LetExprContext ctx) {
-	}
-
+	@Override public void enterLetExpr(MiniZincGrammarParser.LetExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitLetExpr(MiniZincGrammarParser.LetExprContext ctx) {
-	}
-
+	@Override public void exitLetExpr(MiniZincGrammarParser.LetExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterLetDecl(MiniZincGrammarParser.LetDeclContext ctx) {
-	}
-
+	@Override public void enterLetDecl(MiniZincGrammarParser.LetDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitLetDecl(MiniZincGrammarParser.LetDeclContext ctx) {
-	}
-
+	@Override public void exitLetDecl(MiniZincGrammarParser.LetDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterIfExpr(MiniZincGrammarParser.IfExprContext ctx) {
-	}
-
+	@Override public void enterIfExpr(MiniZincGrammarParser.IfExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitIfExpr(MiniZincGrammarParser.IfExprContext ctx) {
-	}
-
+	@Override public void exitIfExpr(MiniZincGrammarParser.IfExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBodyIf(MiniZincGrammarParser.BodyIfContext ctx) {
-	}
-
+	@Override public void enterBodyIf(MiniZincGrammarParser.BodyIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBodyIf(MiniZincGrammarParser.BodyIfContext ctx) {
-	}
-
+	@Override public void exitBodyIf(MiniZincGrammarParser.BodyIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterElseS(MiniZincGrammarParser.ElseSContext ctx) {
-	}
-
+	@Override public void enterElseS(MiniZincGrammarParser.ElseSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitElseS(MiniZincGrammarParser.ElseSContext ctx) {
-	}
-
+	@Override public void exitElseS(MiniZincGrammarParser.ElseSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterElseifS(MiniZincGrammarParser.ElseifSContext ctx) {
-	}
-
+	@Override public void enterElseifS(MiniZincGrammarParser.ElseifSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitElseifS(MiniZincGrammarParser.ElseifSContext ctx) {
-	}
-
+	@Override public void exitElseifS(MiniZincGrammarParser.ElseifSContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSetVal(MiniZincGrammarParser.SetValContext ctx) {
-	}
-
+	@Override public void enterSetVal(MiniZincGrammarParser.SetValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSetVal(MiniZincGrammarParser.SetValContext ctx) {
-	}
-
+	@Override public void exitSetVal(MiniZincGrammarParser.SetValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterSetExpr(MiniZincGrammarParser.SetExprContext ctx) {
-	}
-
+	@Override public void enterSetExpr(MiniZincGrammarParser.SetExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitSetExpr(MiniZincGrammarParser.SetExprContext ctx) {
-	}
-
+	@Override public void exitSetExpr(MiniZincGrammarParser.SetExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterBracketExpr(MiniZincGrammarParser.BracketExprContext ctx) {
-	}
-
+	@Override public void enterBracketExpr(MiniZincGrammarParser.BracketExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitBracketExpr(MiniZincGrammarParser.BracketExprContext ctx) {
-	}
-
+	@Override public void exitBracketExpr(MiniZincGrammarParser.BracketExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterGuardedSet(MiniZincGrammarParser.GuardedSetContext ctx) {
-	}
-
+	@Override public void enterGuardedSet(MiniZincGrammarParser.GuardedSetContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitGuardedSet(MiniZincGrammarParser.GuardedSetContext ctx) {
-	}
-
+	@Override public void exitGuardedSet(MiniZincGrammarParser.GuardedSetContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterCommaList(MiniZincGrammarParser.CommaListContext ctx) {
-	}
-
+	@Override public void enterCommaList(MiniZincGrammarParser.CommaListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitCommaList(MiniZincGrammarParser.CommaListContext ctx) {
-	}
-
+	@Override public void exitCommaList(MiniZincGrammarParser.CommaListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterGuard(MiniZincGrammarParser.GuardContext ctx) {
-	}
-
+	@Override public void enterGuard(MiniZincGrammarParser.GuardContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitGuard(MiniZincGrammarParser.GuardContext ctx) {
-	}
-
+	@Override public void exitGuard(MiniZincGrammarParser.GuardContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterRange(MiniZincGrammarParser.RangeContext ctx) {
-	}
-
+	@Override public void enterRange(MiniZincGrammarParser.RangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitRange(MiniZincGrammarParser.RangeContext ctx) {
-	}
-
+	@Override public void exitRange(MiniZincGrammarParser.RangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterFromR(MiniZincGrammarParser.FromRContext ctx) {
-	}
-
+	@Override public void enterFromR(MiniZincGrammarParser.FromRContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitFromR(MiniZincGrammarParser.FromRContext ctx) {
-	}
-
+	@Override public void exitFromR(MiniZincGrammarParser.FromRContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterToR(MiniZincGrammarParser.ToRContext ctx) {
-	}
-
+	@Override public void enterToR(MiniZincGrammarParser.ToRContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitToR(MiniZincGrammarParser.ToRContext ctx) {
-	}
-
+	@Override public void exitToR(MiniZincGrammarParser.ToRContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterRint(MiniZincGrammarParser.RintContext ctx) {
-	}
-
+	@Override public void enterRint(MiniZincGrammarParser.RintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitRint(MiniZincGrammarParser.RintContext ctx) {
-	}
-
+	@Override public void exitRint(MiniZincGrammarParser.RintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterRfloat(MiniZincGrammarParser.RfloatContext ctx) {
-	}
-
+	@Override public void enterRfloat(MiniZincGrammarParser.RfloatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitRfloat(MiniZincGrammarParser.RfloatContext ctx) {
-	}
-
+	@Override public void exitRfloat(MiniZincGrammarParser.RfloatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterRbool(MiniZincGrammarParser.RboolContext ctx) {
-	}
-
+	@Override public void enterRbool(MiniZincGrammarParser.RboolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitRbool(MiniZincGrammarParser.RboolContext ctx) {
-	}
-
+	@Override public void exitRbool(MiniZincGrammarParser.RboolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterInteger(MiniZincGrammarParser.IntegerContext ctx) {
-	}
-
+	@Override public void enterInteger(MiniZincGrammarParser.IntegerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitInteger(MiniZincGrammarParser.IntegerContext ctx) {
-	}
-
+	@Override public void exitInteger(MiniZincGrammarParser.IntegerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterReal(MiniZincGrammarParser.RealContext ctx) {
-	}
-
+	@Override public void enterReal(MiniZincGrammarParser.RealContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitReal(MiniZincGrammarParser.RealContext ctx) {
-	}
-
+	@Override public void exitReal(MiniZincGrammarParser.RealContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterString(MiniZincGrammarParser.StringContext ctx) {
-	}
-
+	@Override public void enterString(MiniZincGrammarParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitString(MiniZincGrammarParser.StringContext ctx) {
-	}
+	@Override public void exitString(MiniZincGrammarParser.StringContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void enterEveryRule(ParserRuleContext ctx) {
-	}
-
+	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void exitEveryRule(ParserRuleContext ctx) {
-	}
-
+	@Override public void exitEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void visitTerminal(TerminalNode node) {
-	}
-
+	@Override public void visitTerminal(TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
+	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override
-	public void visitErrorNode(ErrorNode node) {
-	}
+	@Override public void visitErrorNode(ErrorNode node) { }
 }

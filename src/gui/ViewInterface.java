@@ -73,4 +73,16 @@ public interface ViewInterface {
 	 */
 	public void displayPreprocess(MiniZincSQLModel mp);
 
+	/**
+	 * Shows the result after the first phase
+	 * @param mp
+	 */
+	public void displayFirstPhase(MiniZincSQLModel mp);
+
+	/**
+	 * Shows the result after the second phase
+	 * @param mp
+	 */
+	public void displaySecondPhase(MiniZincSQLModel mp);
+
 }

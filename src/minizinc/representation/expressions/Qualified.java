@@ -65,10 +65,10 @@ public class Qualified extends Expr {
 		ID id2c = id2.clone();
 		if (id1 == null) {
 			ArrayAccess aa2 = aa.clone();
-			r = new Qualified(aa, id2);
+			r = new Qualified(aa2, id2c);
 		} else {
 			ID id1c = id1.clone();
-			r = new Qualified(id1, id2);
+			r = new Qualified(id1c, id2c);
 		}
 		return r;
 	}

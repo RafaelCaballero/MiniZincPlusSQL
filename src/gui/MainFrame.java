@@ -84,8 +84,12 @@ public class MainFrame extends JFrame implements ViewInterface {
 	// private StyleContext sc = new StyleContext();
 	final SyntaxDocument doc = new SyntaxDocument();
 	private JTextPane textSourceCode;
+	final private SyntaxDocument docPrepro = new SyntaxDocument();
+	final private SyntaxDocument docFirstPhase = new SyntaxDocument();
+	final private SyntaxDocument docSecondPhase = new SyntaxDocument();
 	private JTextPane preprocessSourceCode;
-	private static int SOURCECODETAB = 0;
+	private JTextPane firstPhaseSourceCode;
+	private JTextPane secondPhaseSourceCode;
 	private JTextPane output;
 
 	/**
@@ -168,12 +172,18 @@ public class MainFrame extends JFrame implements ViewInterface {
 		textSourceCode = new JTextPane(this.doc);
 		JScrollPane stextView = new JScrollPane(textSourceCode);
 		center.addTab("Source", null, stextView, "MiniZinc+SQL source");
-		SOURCECODETAB = 1;
-		// center.setEnabledAt(0, false);
 
-		preprocessSourceCode = new JTextPane(this.doc);
+		preprocessSourceCode = new JTextPane(this.docPrepro);
 		JScrollPane preprocessTextView = new JScrollPane(preprocessSourceCode);
 		center.addTab("Preprocess", null, preprocessTextView, "MiniZinc+SQL after preprocessing");
+
+		firstPhaseSourceCode = new JTextPane(this.docFirstPhase);
+		JScrollPane firstPhaseTextView = new JScrollPane(firstPhaseSourceCode);
+		center.addTab("First", null, firstPhaseTextView, "MiniZinc+SQL after first phase");
+
+		secondPhaseSourceCode = new JTextPane(this.docSecondPhase);
+		JScrollPane secondPhaseTextView = new JScrollPane(secondPhaseSourceCode);
+		center.addTab("Second", null, secondPhaseTextView, "MiniZinc+SQL after second phase");
 
 		this.output = new JTextPane();
 		JScrollPane outputView = new JScrollPane(output);
@@ -366,6 +376,47 @@ public class MainFrame extends JFrame implements ViewInterface {
 		} catch (Exception e) {
 			System.out.println(e);
 			logger.error("Error displaying preprocessed code! {}",e.getMessage());
+		}
+
+	center.updateUI();
+		
+	}
+
+	@Override
+	public void displayFirstPhase(MiniZincSQLModel mp) {
+		
+		firstPhaseSourceCode.setText("% MiniZinc+SQL first phase\n");
+		try {
+			StyledDocument document = (StyledDocument) firstPhaseSourceCode.getDocument();
+			
+
+			String pre = mp.print();
+			document.insertString(document.getLength(), pre + "\n", null);
+
+		} catch (Exception e) {
+			System.out.println(e);
+			logger.error("Error displaying first phase code! {}",e.getMessage());
+		}
+
+	center.updateUI();
+		
+	}
+
+	
+	@Override
+	public void displaySecondPhase(MiniZincSQLModel mp) {
+		
+		secondPhaseSourceCode.setText("% MiniZinc+SQL second phase\n");
+		try {
+			StyledDocument document = (StyledDocument) secondPhaseSourceCode.getDocument();
+			
+
+			String pre = mp.print();
+			document.insertString(document.getLength(), pre + "\n", null);
+
+		} catch (Exception e) {
+			System.out.println(e);
+			logger.error("Error displaying second phase code! {}",e.getMessage());
 		}
 
 	center.updateUI();

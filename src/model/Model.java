@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -9,13 +11,36 @@ import org.slf4j.Logger;
 import conf.AppConf;
 import control.MiniZincPlusModel;
 import logger.AreaAppender;
+import minizinc.representation.expressions.And;
+import minizinc.representation.expressions.ArithExpr;
+import minizinc.representation.expressions.Expr;
+import minizinc.representation.expressions.ID;
+import minizinc.representation.expressions.IdArrayAccess;
+import minizinc.representation.expressions.InDecl;
+import minizinc.representation.expressions.InfixArithBoolExpr;
+import minizinc.representation.expressions.Operand;
+import minizinc.representation.expressions.PredicateCall;
+import minizinc.representation.expressions.sets.RangeSetVal;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
+import minizinc.representation.statement.Constraint;
 import minizinc.representation.statement.decls.VarDecl;
+import minizinc.representation.types.Rbool;
+import minizinc.representation.types.Rfloat;
+import minizinc.representation.types.Rint;
+import minizinc.representation.types.Type;
+import minizinc.representation.types.TypeArray;
+import minizinc.representation.types.TypeID;
+import minizinc.representation.types.TypeRange;
+import minizinc.representation.types.TypeSet;
 import model.connection.ConnectionData;
 import model.connection.SQLConnector;
+import model.queries.Query;
+import model.queries.RelationMinAndMax;
 import model.relation.Database;
-import transformation.EliminateTupleVariables;
-import transformation.Replacement;
+import transformation.Substitution;
+import transformation.preprocess.EliminateTupleVariables;
+import transformation.preprocess.PreprocessResult;
+import transformation.preprocess.Replacement;
 
 public class Model {
 
@@ -101,27 +126,6 @@ public class Model {
 
 	}
 
-	/**
-	 * Solver for MiniZincPlus
-	 * 
-	 * @param mp
-	 *            Source model
-	 * @param i
-	 *            Number of answers in MiniZinc
-	 * @param j
-	 *            Number of answers in SQL
-	 */
-	public void solver(MiniZincSQLModel mp, int i, int j) {
-		EliminateTupleVariables etv = preProcess(mp, connector, db);
-		if (etv.aborted()) {
-			logger.error("Preprocess error, aborting...");
-		} else {
-			
-			firstPhase();
-			secondPhase();
-			thirdPhase();
-		}
-	}
 
 
 	public EliminateTupleVariables preProcess(MiniZincSQLModel mp) {
@@ -145,6 +149,7 @@ public class Model {
 					
 				}
 			}
+			logger.info("Using SQL table {}",r.getSqlName());
 		}
 		logger.info("-----------------\n");
 		
@@ -163,16 +168,233 @@ public class Model {
 		return etv;
 
 	}
+	@Deprecated
 	private void thirdPhase() {
 
 	}
 
-	private void secondPhase() {
-
+	public void secondPhase(PreprocessResult list, MiniZincSQLModel mp) {
+		 List<ID> result  = changeSQLVarsToBoolean(list);
+	
 	}
 
-	private void firstPhase() {
+	/**
+	 * Changes the type of pure SQL variables to boolean
+	 * @param list List of variables obtained after the preprocessing
+	 * @return list of variables that have been changed to boolean
+	 */
+	private List<ID> changeSQLVarsToBoolean(PreprocessResult list) {
+	   List<ID> result = new ArrayList<ID>();
+		// process each non-mixed variable
+		if (list!=null)
+			for (Replacement r:list) {
+				List<VarDecl> vars = r.getNewDecls();
+				List<Boolean> mixed = r.getMixed();			
+  			    for (int i=0; i<vars.size();i++ ) {
+  			    	if (!mixed.get(i)) {
+  			    		VarDecl var = vars.get(i);
+  			    		Type type = var.getDeclType();
+  			    		// change the variable to boolean
+  			    		Rbool typeBool = new Rbool();
+  			    		Type newType = null;
+  			  		    boolean isTypeArray = type instanceof TypeArray;
+  					    boolean isTypeSet = type instanceof TypeSet;
+  					    if (isTypeArray)  {
+  					    	TypeArray ta = (TypeArray) type;
+  					    	ta.setBase(typeBool);
+  					    	newType = ta;
+  					    }
+  					    else if (isTypeSet) {
+  					    	TypeSet ts = (TypeSet) type;
+  					    	ts.setElem(typeBool);
+  					    	newType = ts;
+  					    }
+  					    else {
+  					    	newType = typeBool;
+  					    }
+  			    		
+  					    // change the declaration type 
+  			    		var.setDeclType(newType);
+  			    		// a new variable type has been changed
+  			    		result.add(var.getID());
 
+  			    		
+  			    	}
+  			    }
+			}
+		return result;
+	}
+
+	/**
+	 * @param list List of replacements occurred during pre-processing
+	 * @param mp
+	 */
+	public void firstPhase(PreprocessResult list, MiniZincSQLModel mp) {
+		// process each mixed variable
+		if (list!=null)
+			for (Replacement r:list) {
+				List<VarDecl> vars = r.getNewDecls();
+				List<Boolean> mixed = r.getMixed();
+				List<String> colNames = r.getColumnNames();
+				String table = r.getSqlName();
+  			    for (int i=0; i<vars.size();i++ )
+  			    	if (mixed.get(i)) {
+  			    		// only integers and float are used
+  			    		VarDecl var = vars.get(i);
+  			    		String colName = colNames.get(i);
+  			    		addConstraints(mp, var, table, colName);
+  			    	}
+					   
+				
+			}
+	}
+
+	/**
+	 * New constraints related to the first phase. 
+	 * We have already checked that the variable is mixed.
+	 * @param mp Model to be modified
+	 * @param var Variable
+	 * @param table SQL table
+	 * @param colName column name in the table
+	 */
+	private void addConstraints(MiniZincSQLModel mp, VarDecl var, String table, String colName) {
+  		Type type  = var.getDeclType();
+  		ID varID = var.getID();
+  		
+  		Type elemType=type;
+		//boolean isTypeID = type instanceof TypeID;
+		boolean isTypeArray = type instanceof TypeArray;
+		boolean isTypeSet = type instanceof TypeSet;
+		
+
+		
+		if (isTypeArray){
+			TypeArray ta = (TypeArray) type;
+			elemType = ta.getBase();
+		}
+		
+		if (isTypeSet) {
+			TypeSet ts = (TypeSet) type;
+			elemType = ts.getElem();			
+		}
+
+		RelationMinAndMax extremes=null;
+		try {
+  		  if (elemType instanceof Rfloat) {
+  			 extremes=  Query.getMinAndMaxFloat(this.connector.getConnection(),table,colName);
+  		  }
+  		  if (elemType instanceof Rint) {	
+  			extremes=  Query.getMinAndMaxInteger(this.connector.getConnection(),table,colName);
+ 			
+  		  }
+		} catch(SQLException e){
+		    logger.error("Error in phase 1: {}, {}",e.getMessage(),e.getStackTrace());	
+		}
+		if (extremes!=null)
+		    generateNewConstraint(mp,type, varID, extremes);
+		
+	}
+
+	/**
+	 * New constraints obtained from the min and the max values in the SQL table
+	 * @param mp The model
+	 * @param type The type of the var
+	 * @param varID Var ID
+	 * @param extremes maximun and minimun
+	 */
+	private void generateNewConstraint(MiniZincSQLModel mp, Type type, ID varID, 
+			                               RelationMinAndMax extremes) {
+
+		boolean isTypeArray = type instanceof TypeArray;
+
+		Expr expr;
+		if (isTypeArray) {
+			generateNewConstraintArray(mp,type,varID,extremes);
+		} 
+		
+		boolean isTypeID = type instanceof TypeID;
+		if (isTypeID) {
+			And andConstraint = createAnd(new Operand(varID),extremes.max,extremes.min);
+			Constraint newConstraint = new Constraint(andConstraint);
+			mp.add(newConstraint);
+			
+		}
+		
+		boolean isFloat = type instanceof Rint || type instanceof Rfloat ;
+		if (isFloat) {
+			And andConstraint = createAnd(new Operand(varID),extremes.max,extremes.min);
+			Constraint newConstraint = new Constraint(andConstraint);
+			mp.add(newConstraint);
+			
+		}
+		
+			
+		
+			 
+	}
+	
+	private And createAnd(Operand value, Operand max, Operand min) {
+		And result=null;
+		InfixArithBoolExpr e1 = new InfixArithBoolExpr("<=",value,max);
+		InfixArithBoolExpr e2 =  new InfixArithBoolExpr(">=",value,min);
+		result = new And(e1,e2);
+		return result;
+	}
+
+	private void generateNewConstraintArray(MiniZincSQLModel mp, Type type, ID varID, RelationMinAndMax extremes) {
+		TypeArray ta = (TypeArray) type;
+		
+		// prepare the (i in ..)
+		List<InDecl> lindecl = new ArrayList<InDecl>();
+		List<Type> dimensions = ta.getDimensions();
+		List<Expr> newIds = new ArrayList<Expr>();
+		List<ID> guard = new ArrayList<ID>();
+		int i=0;
+		for (Type dim:dimensions) {
+			i++;
+			// for each dimension a new variable
+			if (dim instanceof TypeRange) {
+				// just one variable				
+				ID id = new ID("index_"+varID.print()+"_"+i);
+				newIds.add(id);
+				guard.add(id);
+				TypeRange tr = (TypeRange) dim;
+				RangeSetVal rangeSetVal = null;
+				if (tr.isFromToRange()) {
+					ArithExpr from = tr.getFrom();
+					ArithExpr to = tr.getTo();
+					rangeSetVal = new RangeSetVal(from,to);
+				} else {
+					ID theID = tr.getID();
+					rangeSetVal = new RangeSetVal(theID);
+					
+				}
+					
+				InDecl inDecl = new InDecl(guard,rangeSetVal) ;
+				lindecl.add(inDecl);
+			} else	
+			  logger.error("Error in first phase. Unexpected dimension type. Variable: {}, Type: {}",
+					       varID.print(), dim.print());
+		}
+
+		// create forall
+		// PredOurUnion -> infixBoolExpr
+		// -> InfixArithBoolExpr IdArrayAccess IntC >
+		List<Expr> args = new ArrayList<Expr>();
+		IdArrayAccess aa = new IdArrayAccess(varID, newIds);
+		
+		// just one argument: the and of two atomic constraints
+		
+		And andExpr = createAnd(new Operand(aa), extremes.max,extremes.min);
+		args.add(andExpr);
+		
+		 
+		
+		Expr expr = new PredicateCall(new ID("forall"),lindecl,args);
+		Constraint c = new Constraint(expr);	
+		mp.addConstraint(c);
+
+		
 	}
 
 }

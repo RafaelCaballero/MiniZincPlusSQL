@@ -80,7 +80,7 @@ public abstract class Expr implements MiniZincRepresentation, SubExpressions, Ty
 		} else if (Parsing.has(ctx.letExpr())) {
 			t = LetExpr.letExpr(ctx.letExpr());
 		} else if (Parsing.has(ctx.predOrUnionExpr())) {
-			t = PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr());
+			t = PredicateCall.predOrUnionExpr(ctx.predOrUnionExpr());
 		} else if (Parsing.hasTerminal(ctx.BOOL())) {
 			t = BoolC.BOOLTerm(ctx.BOOL());
 		} else if (Parsing.has(ctx.real())) {
@@ -117,7 +117,7 @@ public abstract class Expr implements MiniZincRepresentation, SubExpressions, Ty
 	 * @return
 	 */
 	public static boolean isBasic(Expr ep) {
-		boolean r = ep instanceof IntC || ep instanceof PredOrUnionExpr || ep instanceof StringC || ep instanceof ID
+		boolean r = ep instanceof IntC || ep instanceof PredicateCall || ep instanceof StringC || ep instanceof ID
 				|| ep instanceof BoolC || ep instanceof FloatC || (ep instanceof Operand && ((Operand) ep).isBasic())
 				|| ((ep instanceof MinusArithExpr) && Expr.isBasic(((MinusArithExpr) ep).getExpr()));
 		return r;

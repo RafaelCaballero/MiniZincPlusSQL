@@ -13,7 +13,7 @@ import minizinc.representation.expressions.Expr;
 import minizinc.representation.expressions.ID;
 import minizinc.representation.expressions.InfixExpr;
 import minizinc.representation.expressions.InfixOp;
-import minizinc.representation.expressions.PredOrUnionExpr;
+import minizinc.representation.expressions.PredicateCall;
 import minizinc.representation.statement.QualName;
 
 /**
@@ -83,8 +83,8 @@ public class CallGetter implements ExprTransformer {
 			QualName idqn = null;
 
 			// two cases, 1) predicate or unions and 2) functions expressions
-			if (input instanceof PredOrUnionExpr) {
-				ID checkqn = ((PredOrUnionExpr) input).getId();
+			if (input instanceof PredicateCall) {
+				ID checkqn = ((PredicateCall) input).getId();
 				idqn = new QualName(checkqn);
 			}
 

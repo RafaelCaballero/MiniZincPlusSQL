@@ -1,4 +1,4 @@
-package transformation;
+package transformation.preprocess;
 
 import java.util.List;
 
@@ -14,18 +14,25 @@ public class Replacement {
 	private VarDecl decl;
 	private List<VarDecl> newDecls;
 	private List<Boolean> mixed;
+	private List<String> columnNames;
 	
 	/**
 	 * @param sqlName Name of the associated relational table
 	 * @param decl Substituted declaration
 	 * @param newDecls New var declarations that substitute decl.
+	 * @param columnName 
 	 * @param mixed For each element in newDecls indicate if its a mixed variable
 	 */
-	public Replacement(String sqlName, VarDecl decl, List<VarDecl> newDecls, List<Boolean> mixed) {
+	public Replacement(String sqlName, VarDecl decl, List<VarDecl> newDecls, List<String> columnNames, List<Boolean> mixed) {
 		this.sqlName = sqlName;
 		this.decl = decl;
 		this.newDecls = newDecls;
 		this.mixed = mixed;
+		this.columnNames = columnNames;
+	}
+
+	public List<String> getColumnNames() {
+		return columnNames;
 	}
 
 	public String getSqlName() {

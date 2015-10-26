@@ -64,7 +64,7 @@ public class ListValue extends ListExpr {
 	 * @param e
 	 *            An ArrayAccess representing a list
 	 */
-	public ListValue(PredOrUnionExpr e) {
+	public ListValue(PredicateCall e) {
 		this.e = e;
 	}
 
@@ -108,7 +108,7 @@ public class ListValue extends ListExpr {
 		} else if (Parsing.has(lvc.arrayaccess())) {
 			t = new ListValue(ArrayAccess.arrayaccess(lvc.arrayaccess()));
 		} else if (Parsing.has(lvc.predOrUnionExpr())) {
-			t = new ListValue(PredOrUnionExpr.predOrUnionExpr(lvc.predOrUnionExpr()));
+			t = new ListValue(PredicateCall.predOrUnionExpr(lvc.predOrUnionExpr()));
 		} else if (Parsing.has(lvc.qualified())) {
 			t = new ListValue(Qualified.qualified(lvc.qualified()));
 		} else
@@ -137,8 +137,8 @@ public class ListValue extends ListExpr {
 			r = new ListValue(ep);
 		}
 
-		if (e instanceof PredOrUnionExpr) {
-			PredOrUnionExpr ep = e == null ? null : ((PredOrUnionExpr) e).clone();
+		if (e instanceof PredicateCall) {
+			PredicateCall ep = e == null ? null : ((PredicateCall) e).clone();
 			r = new ListValue(ep);
 		}
 

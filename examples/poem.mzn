@@ -31,10 +31,10 @@ constraint w[2*1].word != w[2*2].word /\ w[2*1].word != w[2*3].word
            /\  w[2*2].word != w[2*3].word; 
 
 % rhyme: adjectives must end in 'ous', adverbs in 'i_e'
-constraint forall(i in 1..nlines) 
+constraint forall(i in 1..nlines)( 
             (w[2*i].type=adjective /\ w[2*i].word like "%ous")
              \/
-            (w[2*i].type=noun      /\ w[2*i].word like "%i_e"); 
+            (w[2*i].type=noun      /\ w[2*i].word like "%i_e")); 
 
 solve satisfy;
 

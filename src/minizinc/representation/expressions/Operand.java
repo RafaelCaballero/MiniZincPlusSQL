@@ -56,7 +56,7 @@ public class Operand extends ArithExpr {
 		this.e = e;
 	}
 
-	public Operand(PredOrUnionExpr e) {
+	public Operand(PredicateCall e) {
 		this.e = e;
 	}
 
@@ -124,7 +124,7 @@ public class Operand extends ArithExpr {
 			RbracketExpr re = RbracketExpr.rbracketArithExpr(ctx.arithExpr());
 			op = new Operand(re);
 		} else if (Parsing.has(ctx.predOrUnionExpr()))
-			op = new Operand(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
+			op = new Operand(PredicateCall.predOrUnionExpr(ctx.predOrUnionExpr()));
 		else if (Parsing.has(ctx.string()))
 			op = new Operand(StringC.stringTerm(ctx.string()));
 		else if (Parsing.has(ctx.qualified()))
@@ -170,8 +170,8 @@ public class Operand extends ArithExpr {
 			r = new Operand(exprp);
 		}
 
-		if (e instanceof PredOrUnionExpr) {
-			PredOrUnionExpr exprp = e == null ? null : ((PredOrUnionExpr) e).clone();
+		if (e instanceof PredicateCall) {
+			PredicateCall exprp = e == null ? null : ((PredicateCall) e).clone();
 			r = new Operand(exprp);
 		}
 

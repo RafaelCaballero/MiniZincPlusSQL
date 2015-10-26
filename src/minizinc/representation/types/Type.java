@@ -1,6 +1,5 @@
 package minizinc.representation.types;
 
-import java.util.List;
 
 import antlr4.MiniZincGrammarParser.TypenameContext;
 import minizinc.representation.MiniZincRepresentation;

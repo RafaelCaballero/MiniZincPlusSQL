@@ -123,42 +123,5 @@ public class VarDecl extends Decl {
 		return r;
 	}
 
-	/**
-	 * This method is only valid for union variable declarations
-	 * 
-	 * @return
-	 */
-	public int getLevel() {
-		int r = -1;
-		if (declType instanceof TypeUnion) {
-			TypeUnion t = (TypeUnion) declType;
-			// get the expression indicating the level
-			ArithExpr e = t.getE();
-			// at the moment only integer constants are allowed
-			if (e instanceof Operand) {
-				Expr exp = ((Operand) e).getExpr();
-				if (exp instanceof IntC) {
-					r = ((IntC) exp).get();
-				}
-			}
-
-		}
-		return r;
-	}
-
-	/**
-	 * A new level for the variable. Only applicable to union types
-	 * 
-	 * @param level
-	 *            The level
-	 */
-	public void setLevel(int level) {
-		if (declType instanceof TypeUnion) {
-			TypeUnion t = (TypeUnion) declType;
-			t.setE(new Operand(new IntC(level)));
-
-		}
-
-	}
 
 }

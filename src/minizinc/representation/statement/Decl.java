@@ -117,6 +117,10 @@ public abstract class Decl extends Statement {
 	public Type getDeclType() {
 		return declType;
 	}
+	
+	public void setDeclType(Type newType ) {
+		declType = newType;
+	}
 
 	/**
 	 * parses dimensions of a array type declaration. Used by subclasses.

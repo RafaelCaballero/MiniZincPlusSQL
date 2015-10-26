@@ -43,7 +43,7 @@ public class BoolVal extends BoolExpr {
 		e = expr;
 	}
 
-	public BoolVal(PredOrUnionExpr expr) {
+	public BoolVal(PredicateCall expr) {
 		e = expr;
 	}
 
@@ -95,7 +95,7 @@ public class BoolVal extends BoolExpr {
 		} else if (Parsing.has(ctx.letExpr())) {
 			t = new BoolVal(LetExpr.letExpr(ctx.letExpr()));
 		} else if (Parsing.has(ctx.predOrUnionExpr())) {
-			t = new BoolVal(PredOrUnionExpr.predOrUnionExpr(ctx.predOrUnionExpr()));
+			t = new BoolVal(PredicateCall.predOrUnionExpr(ctx.predOrUnionExpr()));
 		} else if (Parsing.has(ctx.qualified())) {
 			Qualified q = Qualified.qualified(ctx.qualified());
 			t = new BoolVal(q);
@@ -135,8 +135,8 @@ public class BoolVal extends BoolExpr {
 			Qualified ep = (e == null ? null : ((Qualified) e).clone());
 			r = new BoolVal(ep);
 		}
-		if (e instanceof PredOrUnionExpr) {
-			PredOrUnionExpr ep = (e == null ? null : ((PredOrUnionExpr) e).clone());
+		if (e instanceof PredicateCall) {
+			PredicateCall ep = (e == null ? null : ((PredicateCall) e).clone());
 			r = new BoolVal(ep);
 		}
 

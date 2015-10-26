@@ -165,5 +165,17 @@ public class TypeRange extends Type {
 	public Expr zero() {
 		return from;
 	}
+	
+	public ArithExpr getFrom() {
+		return from;
+	}
+
+	public ArithExpr getTo() {
+		return to;
+	}
+
+	public ID getID() {
+		return this.setID;
+	}
 
 }

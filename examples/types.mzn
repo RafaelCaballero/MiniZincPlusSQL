@@ -3,7 +3,9 @@
 table  words = "speech.words";
 array[1..3] of var words:w; 
 var words:w2;
-var set of  words:w3;
-var int:x;
-int:y;
+
+constraint forall(i in 1..3)
+            (w[i] like "%ous");
+
+
 

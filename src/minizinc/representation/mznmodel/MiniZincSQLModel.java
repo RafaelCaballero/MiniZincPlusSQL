@@ -39,6 +39,40 @@ public class MiniZincSQLModel extends MznModel {
 	protected List<Solve> solve;
 
 	/**
+	 * Copy constructor
+	 * @param model Model to be copied
+	 */
+	/* TODO
+	public MiniZincSQLModel(MiniZincSQLModel model) {
+		int ncomment = model.comment.size();
+		this.comment = 
+		this.table = table;
+		this.constraint = constraint;
+		this.decl = decl;
+		this.function = function;
+		this.include = include;
+		this.init = init;
+		this.output = output;
+		this.predicate = predicate;
+		this.solve = solve;
+		// this.comment = new ArrayList<Comment>();
+	}
+	*/
+	
+	/* TODO
+	private <T> List<T> clone(List<T> input) {
+		 List<T> result=null;
+		 if (input!=null && input.size()>0) {
+			 result = new ArrayList<T>(input.size());
+			 for(T e:input) {
+				 result.add(e.clone());
+			 }
+		 }
+		 
+		 return result;
+	}
+	*/
+	/**
 	 * complete constructor
 	 */
 	public MiniZincSQLModel(List<Comment> comment, List<Table> table, List<Constraint> constraint, List<Decl> decl,
@@ -554,5 +588,10 @@ public class MiniZincSQLModel extends MznModel {
 		r += printStatements("Solve statement", solve);
 		r += printStatements("output statement", output);
 		return r;
+	}
+
+	public void emptyTables() {
+		table = null;
+		
 	}
 }
