@@ -9,7 +9,10 @@ Solves models based on the combination of MiniZinc and SQL.
 * minizinc 2.0 or newer
 
 ## Usage
-Execute the file and introduce the data in the entry window:
+Start with java -jar [mzn+sql.jar](https://github.com/RafaelCaballero/MiniZincPlusSQL/raw/master/mzn%2Bsql.jar)
+   
+
+and introduce the data in the entry window:
 
 ![Entry screen](https://github.com/RafaelCaballero/MiniZincPlusSQL/blob/master/src/resources/entry.png) 
 

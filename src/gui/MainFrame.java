@@ -87,9 +87,11 @@ public class MainFrame extends JFrame implements ViewInterface {
 	final private SyntaxDocument docPrepro = new SyntaxDocument();
 	final private SyntaxDocument docFirstPhase = new SyntaxDocument();
 	final private SyntaxDocument docSecondPhase = new SyntaxDocument();
+	final private SyntaxDocument docThirdPhase = new SyntaxDocument();
 	private JTextPane preprocessSourceCode;
 	private JTextPane firstPhaseSourceCode;
 	private JTextPane secondPhaseSourceCode;
+	private JTextPane thirdPhaseSourceCode;
 	private JTextPane output;
 
 	/**
@@ -184,6 +186,10 @@ public class MainFrame extends JFrame implements ViewInterface {
 		secondPhaseSourceCode = new JTextPane(this.docSecondPhase);
 		JScrollPane secondPhaseTextView = new JScrollPane(secondPhaseSourceCode);
 		center.addTab("Second", null, secondPhaseTextView, "MiniZinc+SQL after second phase");
+
+		thirdPhaseSourceCode = new JTextPane(this.docThirdPhase);
+		JScrollPane thirdPhaseTextView = new JScrollPane(thirdPhaseSourceCode);
+		center.addTab("SQL", null, thirdPhaseTextView, "SQL after third phase");
 
 		this.output = new JTextPane();
 		JScrollPane outputView = new JScrollPane(output);
