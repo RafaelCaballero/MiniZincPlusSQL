@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ import model.connection.SQLConnector;
 import model.queries.Query;
 import model.queries.RelationMinAndMax;
 import model.relation.Database;
+import transformation.SubstituteSQLExpr;
 import transformation.Substitution;
 import transformation.preprocess.EliminateTupleVariables;
 import transformation.preprocess.PreprocessResult;
@@ -173,8 +175,16 @@ public class Model {
 
 	}
 
-	public void secondPhase(PreprocessResult list, MiniZincSQLModel mp) {
-		 List<ID> result  = changeSQLVarsToBoolean(list);
+	public void secondPhase(PreprocessResult list, MiniZincSQLModel mp, List<VarDecl> lvar) {
+		// extract the list of purevars
+		HashSet<String> purevars = new HashSet<String>();
+		for (VarDecl vDecl:lvar)
+			purevars.add(vDecl.getID().print());
+		
+		SubstituteSQLExpr transformer  = new SubstituteSQLExpr(lvar);
+		mp.applyTransformer(transformer, mp.getConstraint());
+		
+		 
 	
 	}
 
@@ -183,6 +193,7 @@ public class Model {
 	 * @param list List of variables obtained after the preprocessing
 	 * @return list of variables that have been changed to boolean
 	 */
+	/*
 	private List<ID> changeSQLVarsToBoolean(PreprocessResult list) {
 	   List<ID> result = new ArrayList<ID>();
 		// process each non-mixed variable
@@ -224,12 +235,15 @@ public class Model {
 			}
 		return result;
 	}
-
+*/
+	
 	/**
 	 * @param list List of replacements occurred during pre-processing
 	 * @param mp
+	 * @return The list of pure variables
 	 */
-	public void firstPhase(PreprocessResult list, MiniZincSQLModel mp) {
+	public List<VarDecl> firstPhase(PreprocessResult list, MiniZincSQLModel mp) {
+		List<VarDecl> lvar = new ArrayList<VarDecl>();
 		// process each mixed variable
 		if (list!=null)
 			for (Replacement r:list) {
@@ -237,16 +251,21 @@ public class Model {
 				List<Boolean> mixed = r.getMixed();
 				List<String> colNames = r.getColumnNames();
 				String table = r.getSqlName();
-  			    for (int i=0; i<vars.size();i++ )
+  			    for (int i=0; i<vars.size();i++ ) {
+  					VarDecl var = vars.get(i);
   			    	if (mixed.get(i)) {
   			    		// only integers and float are used
-  			    		VarDecl var = vars.get(i);
   			    		String colName = colNames.get(i);
   			    		addConstraints(mp, var, table, colName);
+  			    	} else {
+  			    	    // collect the pure vars 
+  			    		lvar.add(var);
   			    	}
 					   
-				
+  			    } // for 
 			}
+		
+		return lvar;
 	}
 
 	/**

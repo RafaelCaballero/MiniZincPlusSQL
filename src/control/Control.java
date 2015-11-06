@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.slf4j.Logger;
 
@@ -13,6 +14,7 @@ import gui.ViewInterface;
 import gui.statusbar.StatusBarMessage;
 import logger.AreaAppender;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
+import minizinc.representation.statement.decls.VarDecl;
 import model.Model;
 import model.connection.ConnectionData;
 import transformation.preprocess.EliminateTupleVariables;
@@ -150,9 +152,9 @@ public class Control implements ActionListener, MouseListener {
 		else {
 			MiniZincSQLModel prepro = mp; 
 			view.displayPreprocess(prepro);
-			mod.firstPhase(etv.getReplaced(),mp);		
+			List<VarDecl> lvar = mod.firstPhase(etv.getReplaced(),mp);		
 			view.displayFirstPhase(mp);
-			mod.secondPhase(etv.getReplaced(),mp);		
+			mod.secondPhase(etv.getReplaced(),mp,lvar);		
 			view.displaySecondPhase(mp);
 			
 		}

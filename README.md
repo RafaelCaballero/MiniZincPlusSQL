@@ -12,7 +12,7 @@ Solves models based on the combination of MiniZinc and SQL.
 Start with java -jar [mzn+sql.jar](https://github.com/RafaelCaballero/MiniZincPlusSQL/raw/master/mzn%2Bsql.jar)
    
 
-and introduce the data in the entry window:
+and introduce the data required by the entry window:
 
 ![Entry screen](https://github.com/RafaelCaballero/MiniZincPlusSQL/blob/master/src/resources/entry.png) 
 
@@ -20,8 +20,7 @@ The MiniZinc+SQL file is the path to the .mzn file
 
 Click on the save checkbox to store the login information
 
-The file is parsed and presented in the source tab, and the solving process starts. 
-The log tab can be checked to examine a report of the process. The output tab displays the results.
+The file is parsed and presented in the source tab, and the solving process starts. Each phase contains its own tab. The log tab can be checked to examine a report of the process. The output tab displays the results.
 
 ## Limitations
 - Only PostgreSQL supported as underlying database
