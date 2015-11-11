@@ -370,63 +370,59 @@ public class MainFrame extends JFrame implements ViewInterface {
 
 	@Override
 	public void displayPreprocess(MiniZincSQLModel mp) {
-		
+
 		preprocessSourceCode.setText("% MiniZinc+SQL preprocessed\n");
 		try {
 			StyledDocument document = (StyledDocument) preprocessSourceCode.getDocument();
-			
 
 			String pre = mp.print();
 			document.insertString(document.getLength(), pre + "\n", null);
 
 		} catch (Exception e) {
 			System.out.println(e);
-			logger.error("Error displaying preprocessed code! {}",e.getMessage());
+			logger.error("Error displaying preprocessed code! {}", e.getMessage());
 		}
 
-	center.updateUI();
-		
+		center.updateUI();
+
 	}
 
 	@Override
 	public void displayFirstPhase(MiniZincSQLModel mp) {
-		
+
 		firstPhaseSourceCode.setText("% MiniZinc+SQL first phase\n");
 		try {
 			StyledDocument document = (StyledDocument) firstPhaseSourceCode.getDocument();
-			
 
 			String pre = mp.print();
 			document.insertString(document.getLength(), pre + "\n", null);
 
 		} catch (Exception e) {
 			System.out.println(e);
-			logger.error("Error displaying first phase code! {}",e.getMessage());
+			logger.error("Error displaying first phase code! {}", e.getMessage());
 		}
 
-	center.updateUI();
-		
+		center.updateUI();
+
 	}
 
-	
 	@Override
 	public void displaySecondPhase(MiniZincSQLModel mp) {
-		
+
 		secondPhaseSourceCode.setText("% MiniZinc+SQL second phase\n");
 		try {
 			StyledDocument document = (StyledDocument) secondPhaseSourceCode.getDocument();
-			
 
 			String pre = mp.print();
 			document.insertString(document.getLength(), pre + "\n", null);
 
 		} catch (Exception e) {
 			System.out.println(e);
-			logger.error("Error displaying second phase code! {}",e.getMessage());
+			logger.error("Error displaying second phase code! {}", e.getMessage());
 		}
 
-	center.updateUI();
-		
+		center.updateUI();
+
 	}
 
 }

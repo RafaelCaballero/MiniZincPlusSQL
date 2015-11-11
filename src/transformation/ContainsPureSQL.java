@@ -7,6 +7,7 @@ import java.util.HashSet;
 
 import minizinc.representation.expressions.Expr;
 import minizinc.representation.expressions.ID;
+import minizinc.representation.expressions.IdArrayAccess;
 
 /**
  * Represents a substitution of MiniZinc variables by values. Used mainly for
@@ -21,7 +22,6 @@ public class ContainsPureSQL implements ExprTransformer {
 	private HashSet<String> purevars;
 	private boolean isPureVar;
 
-
 	/**
 	 * Creates a constructor that initializes the binding associated to the
 	 * substitution.
@@ -30,11 +30,10 @@ public class ContainsPureSQL implements ExprTransformer {
 		this.purevars = purevars;
 		this.isPureVar = false;
 	}
-	
+
 	public boolean getPureVar() {
 		return this.isPureVar;
 	}
-
 
 	/*
 	 * (non-Javadoc)
@@ -48,8 +47,8 @@ public class ContainsPureSQL implements ExprTransformer {
 	@Override
 	public Expr transform(Expr input) {
 		Expr r = null;
-		if (input != null && input != null && input instanceof ID) {
-			ID id = ((ID) input);
+		if (input != null && (input instanceof IdArrayAccess || input instanceof ID)) {
+			ID id = input instanceof ID ? (ID) input : ((IdArrayAccess) input).getID();
 			if (purevars.contains(id.print()))
 				isPureVar = true;
 

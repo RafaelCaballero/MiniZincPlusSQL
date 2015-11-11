@@ -10,72 +10,155 @@ import java.util.stream.Collectors;
 import minizinc.representation.expressions.Expr;
 import minizinc.representation.expressions.ID;
 import minizinc.representation.expressions.InDecl;
+import minizinc.representation.expressions.InfixArithBoolExpr;
 import minizinc.representation.expressions.LetDecl;
 import minizinc.representation.expressions.LetExpr;
 import minizinc.representation.expressions.PredicateCall;
 import minizinc.representation.statement.Decl;
 import minizinc.representation.statement.decls.VarDecl;
+import minizinc.representation.types.Type;
 
 /**
  * Collects the names all the let variables that occur in an expression
  * 
  * @author rafa
- *
  */
 public class SubstituteSQLExpr implements ExprTransformer {
 	private HashMap<String, Expr> cache = new HashMap<String, Expr>();
+	private HashMap<String, VarDecl> newVars = new HashMap<String, VarDecl>();
 	private HashSet<String> purevars;
 	private List<InDecl> contextVars;
+	private List<Decl> decls;
 
 	/**
-	 * Creates a transformer for the second phase; replacing the non-minizinc constraints
-	 * @param lvar Lists of pure vars
+	 * Creates a transformer for the second phase; replacing the non-minizinc
+	 * constraints
+	 * 
+	 * @param lvar
+	 *            Lists of pure vars
 	 */
-	public SubstituteSQLExpr(List<VarDecl> lvar) {
-		init(lvar);
+	public SubstituteSQLExpr(List<VarDecl> lvar, List<Decl> decls) {
+		init(lvar, decls);
 	}
 
-	private void init(List<VarDecl> lvar) {
-		cache = new HashMap<String,Expr>();
+	private void init(List<VarDecl> lvar, List<Decl> decls) {
+		this.decls = decls;
+		cache = new HashMap<String, Expr>();
+		newVars = new HashMap<String, VarDecl>();
 		purevars = new HashSet<String>();
 		contextVars = new ArrayList<InDecl>();
-		for (VarDecl v:lvar)
-		  this.purevars.add(v.getID().print());
-	
-		
+		for (VarDecl v : lvar)
+			this.purevars.add(v.getID().print());
+
 	}
-	public HashMap<String, Expr>  getCache() {
+
+	public HashMap<String, Expr> getCache() {
 		return cache;
 	}
-	
-	
 
 	@Override
 	public Expr transform(Expr input) {
+		Expr result = null;
+		if (input != null && (input instanceof PredicateCall || input instanceof InfixArithBoolExpr) ) {
+			PredicateCall pc = input instanceof PredicateCall ? (PredicateCall) input : null;
+			InfixArithBoolExpr infix = input instanceof InfixArithBoolExpr ? (InfixArithBoolExpr) input : null;
+			String id = pc != null ? pc.getId().print() : infix.getOp();
 
-		if (input != null && input instanceof PredicateCall) {
-			PredicateCall pc = (PredicateCall) input;
-			String id = pc.getId().print();
+			if (id.equals("forall") || id.equals("exists") || id.equals("product") || id.equals("sum")) {
+				// copy the context vars
+				List<InDecl> contextVarsCopy = new ArrayList<InDecl>();
+				int sizeVars = newVars.size();
+				contextVarsCopy.addAll(contextVars);
 
-			if (id.equals("forall") || id.equals("exists") || id.equals("product") || id.equals("sum") ) {
-				contextVars.addAll(pc.getLindecl()) ;
-			} 
+				contextVars.addAll(pc.getLindecl());
+				// apply the transformer to all the arguments
+				List<Expr> args = pc.getArgs();
+				List<Expr> lresult = input.applyTransformerList(this, args);
+
+				// if there are new variables in the list
+				if (newVars.size() != sizeVars)
+					result = new PredicateCall(pc.getId(), lresult);
+
+				// in any case restore the array
+				contextVars.clear();
+				contextVars.addAll(contextVarsCopy);
+
+			} else {
+				ContainsPureSQL contains = new ContainsPureSQL(purevars);
 				
-			// check if any argument contains a pure SQL variable
-			ContainsPureSQL contains = new ContainsPureSQL(purevars);
-			List<Expr> lexpr = pc.getArgs();
-			input.applyTransformerList(contains, lexpr);
-			if (contains.getPureVar()) {
-				System.out.println(input.print());
-			}
-			
-			
+				if (id.equals("/\\") || id.equals("\\/") || id.equals("->")) {
+					// check if any argument contains a pure SQL variable
+					
+					List<Expr> lexpr = null;
+					if (pc!=null)
+					   lexpr = pc.getArgs();
+					else {
+					    lexpr = new ArrayList<Expr>();
+					    lexpr.add(infix.getE1());
+					    lexpr.add(infix.getE2());
+					}
+					input.applyTransformerList(contains, lexpr);
+
+				} else {
+					// check if the expression contains a pure SQL variable
+					input.applyTransformer(contains, input);
+				}
+				
+				if (contains.getPureVar()) {
+					addVar(pc,infix);
+				}
+
+
+			} 
+
 		}
 
-		// return the same input because this is not really a transformer but a
-		// "getter"
+		// return the new input
 		return input;
 	}
+	
+	/**
+	 * Generate a new variable
+	 * Only one among pc and infix must be not null
+	 * @param pc Is a predicate call
+	 * @param infix Is an infix expression
+	 */
+	private void addVar(PredicateCall pc, InfixArithBoolExpr infix) {
+		// new variable name
+		String varName = generateNewVar();
+		ID newVar = new ID(varName);
+		// obtain the type
+		Type type = newVarType(contextVars,pc,infix);
+		// declare the variable
+		VarDecl  v = new VarDecl(type,newVar);
 
+	}
 
+	private Type newVarType(List<InDecl> contextVars2, PredicateCall pc, InfixArithBoolExpr infix) {
+		Type result=null;
+		if (contextVars!=null && contextVars.size()>0) {
+			// array declaration
+		} 
+		return result;
+	}
+
+	private String generateNewVar() {
+		int i = 0;
+		String name = "b" + i;
+		boolean found = false;
+		do {
+
+			int j = 0;
+			while (!found && decls != null && j < decls.size()) {
+				String s = decls.get(j).getID().print();
+				if (name.equals(s))
+					found = true;
+				j++;
+			}
+			i++;
+
+		} while (found);
+
+		return name;
+	}
 }

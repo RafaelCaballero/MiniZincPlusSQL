@@ -5,7 +5,7 @@ array[1..3] of var words:w;
 var words:w2;
 
 constraint forall(i in 1..3)
-            (w[i] like "%ous");
+            (w[i].word like "%ous");
 
 
 

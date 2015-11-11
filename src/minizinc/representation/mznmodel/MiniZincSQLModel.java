@@ -40,38 +40,26 @@ public class MiniZincSQLModel extends MznModel {
 
 	/**
 	 * Copy constructor
-	 * @param model Model to be copied
+	 * 
+	 * @param model
+	 *            Model to be copied
 	 */
-	/* TODO
-	public MiniZincSQLModel(MiniZincSQLModel model) {
-		int ncomment = model.comment.size();
-		this.comment = 
-		this.table = table;
-		this.constraint = constraint;
-		this.decl = decl;
-		this.function = function;
-		this.include = include;
-		this.init = init;
-		this.output = output;
-		this.predicate = predicate;
-		this.solve = solve;
-		// this.comment = new ArrayList<Comment>();
-	}
-	*/
-	
-	/* TODO
-	private <T> List<T> clone(List<T> input) {
-		 List<T> result=null;
-		 if (input!=null && input.size()>0) {
-			 result = new ArrayList<T>(input.size());
-			 for(T e:input) {
-				 result.add(e.clone());
-			 }
-		 }
-		 
-		 return result;
-	}
-	*/
+	/*
+	 * TODO public MiniZincSQLModel(MiniZincSQLModel model) { int ncomment =
+	 * model.comment.size(); this.comment = this.table = table; this.constraint
+	 * = constraint; this.decl = decl; this.function = function; this.include =
+	 * include; this.init = init; this.output = output; this.predicate =
+	 * predicate; this.solve = solve; // this.comment = new
+	 * ArrayList<Comment>(); }
+	 */
+
+	/*
+	 * TODO private <T> List<T> clone(List<T> input) { List<T> result=null; if
+	 * (input!=null && input.size()>0) { result = new
+	 * ArrayList<T>(input.size()); for(T e:input) { result.add(e.clone()); } }
+	 * 
+	 * return result; }
+	 */
 	/**
 	 * complete constructor
 	 */
@@ -592,6 +580,6 @@ public class MiniZincSQLModel extends MznModel {
 
 	public void emptyTables() {
 		table = null;
-		
+
 	}
 }

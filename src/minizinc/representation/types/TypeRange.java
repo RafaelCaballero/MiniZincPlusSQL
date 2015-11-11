@@ -165,7 +165,7 @@ public class TypeRange extends Type {
 	public Expr zero() {
 		return from;
 	}
-	
+
 	public ArithExpr getFrom() {
 		return from;
 	}

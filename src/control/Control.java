@@ -126,7 +126,7 @@ public class Control implements ActionListener, MouseListener {
 					logger.info("Parsing {}", fileName);
 					MiniZincSQLModel mp = mod.process(fileName);
 					logger.info("End of parsing");
-					logger.info("Preprocessing...");				
+					logger.info("Preprocessing...");
 					solve(mp);
 					logger.info("End of transformation\n");
 
@@ -150,16 +150,15 @@ public class Control implements ActionListener, MouseListener {
 		if (etv.aborted())
 			view.displayError("Error in preprocessing. Set log for details", null);
 		else {
-			MiniZincSQLModel prepro = mp; 
+			MiniZincSQLModel prepro = mp;
 			view.displayPreprocess(prepro);
-			List<VarDecl> lvar = mod.firstPhase(etv.getReplaced(),mp);		
+			List<VarDecl> lvar = mod.firstPhase(etv.getReplaced(), mp);
 			view.displayFirstPhase(mp);
-			mod.secondPhase(etv.getReplaced(),mp,lvar);		
+			mod.secondPhase(etv.getReplaced(), mp, lvar);
 			view.displaySecondPhase(mp);
-			
+
 		}
 
-		
 	}
 
 }

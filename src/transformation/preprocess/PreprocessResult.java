@@ -2,7 +2,7 @@ package transformation.preprocess;
 
 import java.util.ArrayList;
 
-public class PreprocessResult extends ArrayList<Replacement>{
+public class PreprocessResult extends ArrayList<Replacement> {
 
 	/**
 	 * 

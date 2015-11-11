@@ -1,6 +1,5 @@
 package minizinc.representation.types;
 
-
 import antlr4.MiniZincGrammarParser.TypenameContext;
 import minizinc.representation.MiniZincRepresentation;
 import minizinc.representation.Parsing;
@@ -63,6 +62,5 @@ public abstract class Type implements MiniZincRepresentation, Typeable, Cloneabl
 	 *         type
 	 */
 	public abstract Expr zero();
-
 
 }

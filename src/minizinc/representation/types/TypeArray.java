@@ -66,7 +66,8 @@ public class TypeArray extends Type {
 	/**
 	 * Base type
 	 * 
-	 * @param the new base type
+	 * @param the
+	 *            new base type
 	 */
 	public void setBase(Type newBase) {
 		base = newBase;
@@ -162,10 +163,9 @@ public class TypeArray extends Type {
 		// TODO. Zero of an array?
 		return null;
 	}
-	
 
 	public List<Type> getDimensions() {
-		
+
 		return dimensions;
 	}
 

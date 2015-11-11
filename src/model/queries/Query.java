@@ -475,37 +475,39 @@ public class Query {
 		return r;
 	}
 
-	public static RelationMinAndMax getMinAndMaxFloat(Connection conn,String table, String colName) throws SQLException {
-		RelationMinAndMax result=new RelationMinAndMax();
+	public static RelationMinAndMax getMinAndMaxFloat(Connection conn, String table, String colName)
+			throws SQLException {
+		RelationMinAndMax result = new RelationMinAndMax();
 		conn.setAutoCommit(false);
 		Statement st;
 
 		st = conn.createStatement();
 		// Turn use of the cursor on.
 		st.setFetchSize(50);
-		ResultSet rs = st.executeQuery("select min("+colName+"), max("+colName+") from "+table);
+		ResultSet rs = st.executeQuery("select min(" + colName + "), max(" + colName + ") from " + table);
 		if (rs.next()) {
-		 result.min = new Operand(new FloatC(rs.getDouble(1)));
-		 result.max = new Operand(new FloatC(rs.getDouble(2)));
+			result.min = new Operand(new FloatC(rs.getDouble(1)));
+			result.max = new Operand(new FloatC(rs.getDouble(2)));
 		}
 		return result;
-		
+
 	}
 
-	public static RelationMinAndMax getMinAndMaxInteger(Connection conn,String table, String colName) throws SQLException {
-		RelationMinAndMax result=new RelationMinAndMax();
+	public static RelationMinAndMax getMinAndMaxInteger(Connection conn, String table, String colName)
+			throws SQLException {
+		RelationMinAndMax result = new RelationMinAndMax();
 		conn.setAutoCommit(false);
 		Statement st;
 
 		st = conn.createStatement();
 		// Turn use of the cursor on.
 		st.setFetchSize(50);
-		ResultSet rs = st.executeQuery("select min("+colName+"), max("+colName+") from "+table);
+		ResultSet rs = st.executeQuery("select min(" + colName + "), max(" + colName + ") from " + table);
 		if (rs.next()) {
-		 result.min = new Operand(new IntC(rs.getInt(1)));
-		 result.max = new Operand(new IntC(rs.getInt(2)));
+			result.min = new Operand(new IntC(rs.getInt(1)));
+			result.max = new Operand(new IntC(rs.getInt(2)));
 		}
-		
+
 		return result;
 	}
 

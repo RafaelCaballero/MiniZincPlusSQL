@@ -120,7 +120,7 @@ public class IdArrayAccess extends ArrayAccess {
 		ID id2 = this.applyTransformer2(t, id);
 		id = id2;
 	}
-	
+
 	public ID getID() {
 		return id;
 	}

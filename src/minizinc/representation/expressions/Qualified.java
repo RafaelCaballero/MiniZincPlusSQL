@@ -136,7 +136,7 @@ public class Qualified extends Expr {
 			Parsing.error("Qualified error in second symbol" + ctx.getText());
 		return t;
 	}
-	
+
 	public ID getId1() {
 		return id1;
 	}
@@ -148,6 +148,5 @@ public class Qualified extends Expr {
 	public ArrayAccess getArrayAccess() {
 		return aa;
 	}
-
 
 }
