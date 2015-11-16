@@ -22,6 +22,9 @@ import minizinc.representation.expressions.*;
  *
  */
 public class RangeSetVal extends SetVal {
+
+	
+
 	private ArithExpr from;
 	private ArithExpr to;
 	private ID setID;
@@ -151,6 +154,23 @@ public class RangeSetVal extends SetVal {
 		from = from2;
 		setID = setID2;
 
+	}
+	public ArithExpr getFrom() {
+		ArithExpr r = null;
+		if (setID!=null)
+			r = from;	
+		return r;
+	}
+
+	public ArithExpr getTo() {
+		ArithExpr r = null;
+		if (setID!=null)
+			r = to;	
+		return r;
+	}
+
+	public ID getSetID() {
+		return setID;
 	}
 
 }

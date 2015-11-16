@@ -7,16 +7,23 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import minizinc.representation.expressions.ArithExpr;
 import minizinc.representation.expressions.Expr;
 import minizinc.representation.expressions.ID;
+import minizinc.representation.expressions.IdArrayAccess;
 import minizinc.representation.expressions.InDecl;
 import minizinc.representation.expressions.InfixArithBoolExpr;
 import minizinc.representation.expressions.LetDecl;
 import minizinc.representation.expressions.LetExpr;
 import minizinc.representation.expressions.PredicateCall;
+import minizinc.representation.expressions.sets.RangeSetVal;
+import minizinc.representation.expressions.sets.SetExpr;
 import minizinc.representation.statement.Decl;
 import minizinc.representation.statement.decls.VarDecl;
+import minizinc.representation.types.Rbool;
 import minizinc.representation.types.Type;
+import minizinc.representation.types.TypeArray;
+import minizinc.representation.types.TypeRange;
 
 /**
  * Collects the names all the let variables that occur in an expression
@@ -105,7 +112,12 @@ public class SubstituteSQLExpr implements ExprTransformer {
 				}
 				
 				if (contains.getPureVar()) {
-					addVar(pc,infix);
+					String varName = addVar(pc,infix);
+					List<Expr> indices = new ArrayList<Expr>();
+					for (InDecl indecl:contextVars) {
+						indices.addAll(indecl.getGuard());
+					}
+					input = new IdArrayAccess(new ID(varName),indices);
 				}
 
 
@@ -123,7 +135,7 @@ public class SubstituteSQLExpr implements ExprTransformer {
 	 * @param pc Is a predicate call
 	 * @param infix Is an infix expression
 	 */
-	private void addVar(PredicateCall pc, InfixArithBoolExpr infix) {
+	private String addVar(PredicateCall pc, InfixArithBoolExpr infix) {
 		// new variable name
 		String varName = generateNewVar();
 		ID newVar = new ID(varName);
@@ -131,14 +143,29 @@ public class SubstituteSQLExpr implements ExprTransformer {
 		Type type = newVarType(contextVars,pc,infix);
 		// declare the variable
 		VarDecl  v = new VarDecl(type,newVar);
+		newVars.put(varName, v);
+		return varName;
 
 	}
 
 	private Type newVarType(List<InDecl> contextVars2, PredicateCall pc, InfixArithBoolExpr infix) {
 		Type result=null;
 		if (contextVars!=null && contextVars.size()>0) {
-			// array declaration
-		} 
+			List<Type> lt = new ArrayList<Type>();
+			for (InDecl inDecl:contextVars) {
+				SetExpr setExpr = inDecl.getSetExpr();
+				if (setExpr instanceof RangeSetVal) {
+					RangeSetVal rsv = (RangeSetVal) setExpr;
+					ArithExpr from = rsv.getFrom();
+					ArithExpr to = rsv.getTo();	
+					TypeRange range = new TypeRange(from,to);
+					lt.add(range);
+				}
+			 result = new TypeArray(lt,new Rbool());
+			}
+		} else {
+			result = new Rbool();
+		}
 		return result;
 	}
 

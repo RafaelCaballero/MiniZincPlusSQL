@@ -24,6 +24,18 @@ import minizinc.representation.expressions.sets.SetExpr;
  *
  */
 public class InDecl implements MiniZincRepresentation, SubExpressions, Cloneable {
+	public List<ID> getGuard() {
+		return guard;
+	}
+
+	public SetExpr getSetExpr() {
+		return setExpr;
+	}
+
+	public BoolExpr getWhere() {
+		return where;
+	}
+
 	/*
 	 * Non-empty list of identifiers
 	 */
