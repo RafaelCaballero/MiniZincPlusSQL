@@ -123,4 +123,18 @@ public class VarDecl extends Decl {
 		return r;
 	}
 
+	/**
+	 * @return A string with a show for the variable
+	 */
+	public String show() {
+		String s = null;
+		if (declType.type() == TypeName.ARRAY) {
+			TypeArray at = (TypeArray) declType;
+			// to do: intensional list!
+			s = "show(" + id.print() + ")";
+		} else
+			s = "show(" + id.print() + ")";
+		return s;
+	}
+
 }

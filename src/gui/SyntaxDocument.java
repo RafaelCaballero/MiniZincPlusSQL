@@ -64,6 +64,8 @@ public class SyntaxDocument extends DefaultStyledDocument {
 		keywords.add("int");
 		keywords.add("forall");
 		keywords.add("exists");
+		keywords.add("varchar");
+		keywords.add("date");
 	}
 
 	/*
@@ -467,7 +469,7 @@ public class SyntaxDocument extends DefaultStyledDocument {
 	 * Override for other languages
 	 */
 	protected String getSingleLineDelimiter() {
-		return "%";
+		return "#";
 	}
 
 	/*

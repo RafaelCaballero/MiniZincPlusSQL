@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import gui.ViewInterface;
 import gui.statusbar.StatusBarMessage;
 import logger.AreaAppender;
+import minizinc.representation.expressions.Expr;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
 import minizinc.representation.statement.decls.VarDecl;
 import model.Model;
@@ -154,8 +156,12 @@ public class Control implements ActionListener, MouseListener {
 			view.displayPreprocess(prepro);
 			List<VarDecl> lvar = mod.firstPhase(etv.getReplaced(), mp);
 			view.displayFirstPhase(mp);
-			mod.secondPhase(etv.getReplaced(), mp, lvar);
+			HashMap<String, Expr> bools = mod.secondPhase(etv.getReplaced(), mp, lvar);
 			view.displaySecondPhase(mp);
+			String path = view.writeMiniZinc(mp);
+			if (path != null) {
+				String answers = mod.callMiniZinc(path);
+			}
 
 		}
 

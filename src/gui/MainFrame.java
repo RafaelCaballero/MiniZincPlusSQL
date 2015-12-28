@@ -8,7 +8,13 @@ import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -423,6 +429,30 @@ public class MainFrame extends JFrame implements ViewInterface {
 
 		center.updateUI();
 
+	}
+
+	@Override
+	public String writeMiniZinc(MiniZincSQLModel mp) {
+
+		String path = this.conf.getPath();
+		path = path.substring(0, path.lastIndexOf("/"));
+		String outputFile = path + "/secondphase.mzn";
+		try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile), "utf-8"))) {
+			writer.write(mp.print());
+			logger.info("Written mzn file {}", outputFile);
+
+		} catch (UnsupportedEncodingException e) {
+			outputFile = null;
+			logger.error("Error UnsupportedEncodingException writing MiniZinc code! {}", e.getMessage());
+		} catch (FileNotFoundException e) {
+			outputFile = null;
+			logger.error("Error FileNotFoundException writing MiniZinc code! {}", e.getMessage());
+		} catch (IOException e) {
+			outputFile = null;
+			logger.error("Error IOException writing MiniZinc code! {}", e.getMessage());
+		}
+
+		return outputFile;
 	}
 
 }

@@ -26,11 +26,18 @@ import minizinc.representation.types.TypeArray;
 import minizinc.representation.types.TypeRange;
 
 /**
- * Collects the names all the let variables that occur in an expression
+ * Second phase transformer. Replaces the SQL expressions by new vars
  * 
  * @author rafa
  */
 public class SubstituteSQLExpr implements ExprTransformer {
+	public HashMap<String, VarDecl> getNewVars() {
+		return newVars;
+	}
+
+	/**
+	 * Substituted expressions
+	 */
 	private HashMap<String, Expr> cache = new HashMap<String, Expr>();
 	private HashMap<String, VarDecl> newVars = new HashMap<String, VarDecl>();
 	private HashSet<String> purevars;
@@ -66,7 +73,7 @@ public class SubstituteSQLExpr implements ExprTransformer {
 	@Override
 	public Expr transform(Expr input) {
 		Expr result = null;
-		if (input != null && (input instanceof PredicateCall || input instanceof InfixArithBoolExpr) ) {
+		if (input != null && (input instanceof PredicateCall || input instanceof InfixArithBoolExpr)) {
 			PredicateCall pc = input instanceof PredicateCall ? (PredicateCall) input : null;
 			InfixArithBoolExpr infix = input instanceof InfixArithBoolExpr ? (InfixArithBoolExpr) input : null;
 			String id = pc != null ? pc.getId().print() : infix.getOp();
@@ -92,76 +99,84 @@ public class SubstituteSQLExpr implements ExprTransformer {
 
 			} else {
 				ContainsPureSQL contains = new ContainsPureSQL(purevars);
-				
+
 				if (id.equals("/\\") || id.equals("\\/") || id.equals("->")) {
 					// check if any argument contains a pure SQL variable
-					
+
 					List<Expr> lexpr = null;
-					if (pc!=null)
-					   lexpr = pc.getArgs();
+					if (pc != null)
+						lexpr = pc.getArgs();
 					else {
-					    lexpr = new ArrayList<Expr>();
-					    lexpr.add(infix.getE1());
-					    lexpr.add(infix.getE2());
+						lexpr = new ArrayList<Expr>();
+						lexpr.add(infix.getE1());
+						lexpr.add(infix.getE2());
 					}
 					input.applyTransformerList(contains, lexpr);
 
 				} else {
-					// check if the expression contains a pure SQL variable
-					input.applyTransformer(contains, input);
+					if (id.toUpperCase().equals("LIKE"))
+						// check if the expression contains a pure SQL variable
+						input.applyTransformer(contains, input);
 				}
-				
+
 				if (contains.getPureVar()) {
-					String varName = addVar(pc,infix);
+					String varName = addVar(pc, infix);
 					List<Expr> indices = new ArrayList<Expr>();
-					for (InDecl indecl:contextVars) {
+					for (InDecl indecl : contextVars) {
 						indices.addAll(indecl.getGuard());
 					}
-					input = new IdArrayAccess(new ID(varName),indices);
+					// array or variable
+					if (indices.size() > 0)
+						input = new IdArrayAccess(new ID(varName), indices);
+					else
+						input = new ID(varName);
+					cache.put(varName, input);
 				}
 
-
-			} 
+			}
 
 		}
 
 		// return the new input
 		return input;
 	}
-	
+
 	/**
-	 * Generate a new variable
-	 * Only one among pc and infix must be not null
-	 * @param pc Is a predicate call
-	 * @param infix Is an infix expression
+	 * Generate a new variable Only one among pc and infix must be not null
+	 * 
+	 * @param pc
+	 *            Is a predicate call
+	 * @param infix
+	 *            Is an infix expression
 	 */
 	private String addVar(PredicateCall pc, InfixArithBoolExpr infix) {
 		// new variable name
 		String varName = generateNewVar();
 		ID newVar = new ID(varName);
 		// obtain the type
-		Type type = newVarType(contextVars,pc,infix);
+		Type type = newVarType(contextVars, pc, infix);
 		// declare the variable
-		VarDecl  v = new VarDecl(type,newVar);
+		VarDecl v = new VarDecl(type, newVar);
+
 		newVars.put(varName, v);
 		return varName;
 
 	}
 
 	private Type newVarType(List<InDecl> contextVars2, PredicateCall pc, InfixArithBoolExpr infix) {
-		Type result=null;
-		if (contextVars!=null && contextVars.size()>0) {
+		Type result = null;
+		if (contextVars != null && contextVars.size() > 0) {
 			List<Type> lt = new ArrayList<Type>();
-			for (InDecl inDecl:contextVars) {
+			for (InDecl inDecl : contextVars) {
 				SetExpr setExpr = inDecl.getSetExpr();
 				if (setExpr instanceof RangeSetVal) {
 					RangeSetVal rsv = (RangeSetVal) setExpr;
 					ArithExpr from = rsv.getFrom();
-					ArithExpr to = rsv.getTo();	
-					TypeRange range = new TypeRange(from,to);
+					ArithExpr to = rsv.getTo();
+					TypeRange range = new TypeRange(from, to);
 					lt.add(range);
 				}
-			 result = new TypeArray(lt,new Rbool());
+				result = new TypeArray(lt, new Rbool());
 			}
 		} else {
 			result = new Rbool();

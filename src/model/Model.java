@@ -1,10 +1,12 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 import org.slf4j.Logger;
@@ -21,9 +23,14 @@ import minizinc.representation.expressions.InDecl;
 import minizinc.representation.expressions.InfixArithBoolExpr;
 import minizinc.representation.expressions.Operand;
 import minizinc.representation.expressions.PredicateCall;
+import minizinc.representation.expressions.StringC;
+import minizinc.representation.expressions.lists.ListExpr;
+import minizinc.representation.expressions.lists.SimpleList;
 import minizinc.representation.expressions.sets.RangeSetVal;
 import minizinc.representation.mznmodel.MiniZincSQLModel;
 import minizinc.representation.statement.Constraint;
+import minizinc.representation.statement.Decl;
+import minizinc.representation.statement.Output;
 import minizinc.representation.statement.decls.VarDecl;
 import minizinc.representation.types.Rbool;
 import minizinc.representation.types.Rfloat;
@@ -175,7 +182,15 @@ public class Model {
 
 	}
 
-	public void secondPhase(PreprocessResult list, MiniZincSQLModel mp, List<VarDecl> lvar) {
+	/**
+	 * @param list
+	 * @param mp
+	 * @param lvar
+	 *            Pure SQL vars
+	 * @return list of new variables and substituted expressions. The model is
+	 *         modified by removing pure sql vars and adding the new variables
+	 */
+	public HashMap<String, Expr> secondPhase(PreprocessResult list, MiniZincSQLModel mp, List<VarDecl> lvar) {
 		// extract the list of purevars
 		HashSet<String> purevars = new HashSet<String>();
 		for (VarDecl vDecl : lvar)
@@ -183,6 +198,44 @@ public class Model {
 
 		SubstituteSQLExpr transformer = new SubstituteSQLExpr(lvar, mp.getDecl());
 		mp.applyTransformer(transformer, mp.getConstraint());
+		HashMap<String, VarDecl> newVars = transformer.getNewVars();
+
+		// remove pure variables
+		List<Decl> decl = mp.getDecl();
+		int i = 0;
+		while (i < decl.size())
+			if (decl.get(i) instanceof VarDecl && purevars.contains(((VarDecl) decl.get(i)).getID().print()))
+				decl.remove(i);
+			else
+				i++;
+
+		// add new vars
+		for (VarDecl newVar : newVars.values())
+			decl.add(newVar);
+
+		// print the new vars and also the mixed variables
+		List<Expr> loutput = new ArrayList<Expr>();
+		StringC endLine = new StringC("\"\\n\"");
+		for (Decl d : decl) {
+			if (d instanceof VarDecl) {
+				VarDecl var = (VarDecl) d;
+				StringC varName = new StringC("\"" + var.getID().print() + ": " + "\"");
+				loutput.add(varName);
+				StringC showVar = new StringC("show(" + var.getID().print() + ")");
+				loutput.add(showVar);
+				loutput.add(endLine);
+			}
+			// String s = "++[ \""+newVar.getID().print()+":","
+			// +newVar.show()+"]";
+			// output+= s;
+		}
+
+		SimpleList sl = new SimpleList(loutput);
+		Output sta = new Output(sl);
+		mp.addOutput(sta);
+
+		// return the transformation
+		return transformer.getCache();
 
 	}
 
@@ -392,6 +445,54 @@ public class Model {
 		Constraint c = new Constraint(expr);
 		mp.addConstraint(c);
 
+	}
+
+	/**
+	 * Calls to MiniZinc and stores the answer in a file
+	 * 
+	 * @param path
+	 * @return
+	 */
+	public String callMiniZinc(String path) {
+		String output = null;
+		if (path != null) {
+			output = path.substring(0, path.lastIndexOf("/"));
+			output = path + "/output.txt";
+
+			// Get runtime
+			java.lang.Runtime rt = java.lang.Runtime.getRuntime();
+			// Start a new process: UNIX command ls
+			java.lang.Process p;
+			try {
+				String command = "minizinc -a " + path; // +">"+output;
+				logger.info("Invoking MiniZinc with command \n {}: ", command);
+
+				p = rt.exec(command);
+
+				// You can or maybe should wait for the process to complete
+				p.waitFor();
+				int exitP = p.exitValue();
+				logger.trace("Process exited with code {} " + exitP);
+				// Get process' output: its InputStream
+				if (exitP == 0) {
+					java.io.InputStream is = p.getInputStream();
+					java.io.BufferedReader reader = new java.io.BufferedReader(new InputStreamReader(is));
+					// And print each line
+					String s = null;
+					while ((s = reader.readLine()) != null) {
+
+						System.out.println(s);
+					}
+					is.close();
+				}
+			} catch (IOException e) {
+				logger.error("Error IOException calling MiniZinc {}", e.getMessage());
+			} catch (InterruptedException e) {
+				logger.error("Error InterruptedException calling MiniZinc {}", e.getMessage());
+			}
+
+		}
+		return null;
 	}
 
 }

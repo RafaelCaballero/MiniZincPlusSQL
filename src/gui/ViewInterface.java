@@ -88,4 +88,13 @@ public interface ViewInterface {
 	 */
 	public void displaySecondPhase(MiniZincSQLModel mp);
 
+	/**
+	 * Write the second phase result (pure MiniZinc)
+	 * 
+	 * @param mp
+	 *            The model
+	 * @return Path to the mzn file
+	 */
+	public String writeMiniZinc(MiniZincSQLModel mp);
+
 }
